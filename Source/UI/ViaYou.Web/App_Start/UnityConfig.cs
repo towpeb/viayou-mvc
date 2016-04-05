@@ -7,6 +7,8 @@ using Microsoft.Owin.Security;
 using Microsoft.Practices.Unity;
 using Unity.Mvc5;
 using ViaYou.Data;
+using ViaYou.Data.Repositories;
+using ViaYou.Domain.Repositories;
 using ViaYou.Domain.Users;
 
 namespace ViaYou.Web
@@ -17,15 +19,15 @@ namespace ViaYou.Web
         {
 			var container = new UnityContainer();
 
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
-
-            // e.g. container.RegisterType<ITestService, TestService>();
-
             //identity injections
             container.RegisterType<DbContext, ViaYouDataContext>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
             container.RegisterType<IAuthenticationManager>(new InjectionFactory(o => HttpContext.Current.GetOwinContext().Authentication));
+
+            //repositories
+            container.RegisterType<IContainedInRepository, ContainedInRepository>();
+            container.RegisterType<ICategoryRepository, CategoryRepository>();
+            container.RegisterType<ITravelRepository, TravelRepository>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
