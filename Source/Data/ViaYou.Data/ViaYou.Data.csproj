@@ -70,6 +70,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityManager.cs" />
+    <Compile Include="Migrations\201604042114529_InitialCreate.cs" />
+    <Compile Include="Migrations\201604042114529_InitialCreate.Designer.cs">
+      <DependentUpon>201604042114529_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
@@ -86,6 +91,11 @@
       <Project>{96bb8a86-53fc-48a6-abc2-d698aeeecbdb}</Project>
       <Name>ViaYou.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604042114529_InitialCreate.resx">
+      <DependentUpon>201604042114529_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

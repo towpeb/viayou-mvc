@@ -57,11 +57,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Advice.cs" />
+    <Compile Include="Answer.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="Enums\Customer.cs" />
+    <Compile Include="Enums\Measure.cs" />
+    <Compile Include="KeyWord.cs" />
+    <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs" />
+    <Compile Include="Repositories\IAdviceRepository.cs" />
+    <Compile Include="Repositories\IAnswerRepository.cs" />
     <Compile Include="Repositories\IApplicationUserRepository.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
+    <Compile Include="Repositories\ICityRepository.cs" />
     <Compile Include="Repositories\IContainedInRepository.cs" />
+    <Compile Include="Repositories\ICountryRepository.cs" />
+    <Compile Include="Repositories\IPackageRepository.cs" />
+    <Compile Include="Repositories\IQuestionRepository.cs" />
+    <Compile Include="Repositories\ITestimonialRepository.cs" />
     <Compile Include="Repositories\ITravelRepository.cs" />
+    <Compile Include="Testimonial.cs" />
     <Compile Include="Travels\Category.cs" />
     <Compile Include="Travels\ContaidedIn.cs" />
     <Compile Include="Travels\Travel.cs" />

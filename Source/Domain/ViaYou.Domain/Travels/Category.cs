@@ -4,6 +4,14 @@ namespace ViaYou.Domain.Travels
 {
     public class Category
     {
+        public Category()
+        {
+
+        }
+        public Category(string name)
+        {
+            Name = name;
+        }
         public int Id { get; set; }
         [Required]
         [MaxLength(40)]
@@ -11,15 +19,6 @@ namespace ViaYou.Domain.Travels
 
 
         public void Update(string name)
-        {
-            Name = name;
-        }
-
-        public Category()
-        {
-
-        }
-        public Category(string name)
         {
             Name = name;
         }
