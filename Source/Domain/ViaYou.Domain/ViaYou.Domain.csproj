@@ -63,6 +63,8 @@
     <Compile Include="Country.cs" />
     <Compile Include="Enums\Customer.cs" />
     <Compile Include="Enums\Measure.cs" />
+    <Compile Include="Enums\Region.cs" />
+    <Compile Include="HTMLContents.cs" />
     <Compile Include="KeyWord.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Repositories\ICityRepository.cs" />
     <Compile Include="Repositories\IContainedInRepository.cs" />
     <Compile Include="Repositories\ICountryRepository.cs" />
+    <Compile Include="Repositories\IHTMLContentRepository.cs" />
     <Compile Include="Repositories\IPackageRepository.cs" />
     <Compile Include="Repositories\IQuestionRepository.cs" />
     <Compile Include="Repositories\ITestimonialRepository.cs" />
