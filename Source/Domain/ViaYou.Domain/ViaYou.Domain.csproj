@@ -64,7 +64,7 @@
     <Compile Include="Enums\Customer.cs" />
     <Compile Include="Enums\Measure.cs" />
     <Compile Include="Enums\Region.cs" />
-    <Compile Include="HTMLContents.cs" />
+    <Compile Include="HTMLContent.cs" />
     <Compile Include="KeyWord.cs" />
     <Compile Include="Package.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
