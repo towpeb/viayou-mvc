@@ -8,13 +8,13 @@ using ViaYou.Domain.Enums;
 
 namespace ViaYou.Domain
 {
-    public class HTMLContents
+    public class HTMLContent
     {
         public int ID { get; set; }
         [Required]
-        public string text { get; set; }
+        public string Text { get; set; }
         [Required]
-        public Region region { get; set; }
-        public int order { get; set; }
+        public Region Region { get; set; }
+        public int Order { get; set; }
     }
 }

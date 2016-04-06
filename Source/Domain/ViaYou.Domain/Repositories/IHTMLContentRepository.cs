@@ -8,8 +8,8 @@ namespace ViaYou.Domain.Repositories
 {
     interface IHTMLContentRepository
     {
-        HTMLContents GetById(int id);
-        void Add(HTMLContents testimonial);
-        IQueryable<HTMLContents> GetAll();
+        HTMLContent GetById(int id);
+        void Add(HTMLContent testimonial);
+        IQueryable<HTMLContent> GetAll();
     }
 }
