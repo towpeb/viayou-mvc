@@ -292,13 +292,10 @@
     <Content Include="Areas\Admin\Views\Containers\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Containers\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Containers\EditorTemplates\ContainerViewModel.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Areas\Admin\Views\Containers\Delete.cshtml" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -313,7 +310,6 @@
     <Content Include="Scripts\momentjs\moment.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\select2\select2-bootstrap.css" />
     <Content Include="Scripts\select2\select2.js" />
     <Content Include="Scripts\select2\select2.min.js" />
     <Content Include="Scripts\_references.js" />
