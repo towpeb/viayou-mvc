@@ -16,6 +16,7 @@ namespace ViaYou.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
         public static ViaYouDataContext Create()
         {
             return new ViaYouDataContext();
@@ -23,6 +24,6 @@ namespace ViaYou.Data
 
         public DbSet<Travel> Travels { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<ContainedIn> ContainedIn { get; set; }
+        public DbSet<Container> Containers { get; set; }
     }
 }

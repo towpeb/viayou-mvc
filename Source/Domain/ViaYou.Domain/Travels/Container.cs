@@ -3,7 +3,7 @@ using ViaYou.Domain.Enums;
 
 namespace ViaYou.Domain.Travels
 {
-    public class ContainedIn
+    public class Container
     {
         public int Id { get; set; }
         [Required]

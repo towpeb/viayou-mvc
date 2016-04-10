@@ -9,7 +9,7 @@ namespace ViaYou.Domain
         {
             
         }
-        public Package(int id, Category category, ContainedIn containedIn, Travel travel)
+        public Package(int id, Category category, Container containedIn, Travel travel)
         {
             Id = id;
             Category = category;
@@ -20,7 +20,7 @@ namespace ViaYou.Domain
         [Required]
         public Category Category { get; set; }
         [Required]
-        public ContainedIn ContainedIn { get; set; }
+        public Container ContainedIn { get; set; }
         [Required]
         public Travel Travel { get; set; }
     }

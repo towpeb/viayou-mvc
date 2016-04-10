@@ -74,7 +74,7 @@
     <Compile Include="Repositories\IApplicationUserRepository.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\ICityRepository.cs" />
-    <Compile Include="Repositories\IContainedInRepository.cs" />
+    <Compile Include="Repositories\IContainerRepository.cs" />
     <Compile Include="Repositories\ICountryRepository.cs" />
     <Compile Include="Repositories\IHTMLContentRepository.cs" />
     <Compile Include="Repositories\IPackageRepository.cs" />
@@ -83,7 +83,7 @@
     <Compile Include="Repositories\ITravelRepository.cs" />
     <Compile Include="Testimonial.cs" />
     <Compile Include="Travels\Category.cs" />
-    <Compile Include="Travels\ContaidedIn.cs" />
+    <Compile Include="Travels\Container.cs" />
     <Compile Include="Travels\Travel.cs" />
     <Compile Include="Users\ApplicationUser.cs" />
   </ItemGroup>
