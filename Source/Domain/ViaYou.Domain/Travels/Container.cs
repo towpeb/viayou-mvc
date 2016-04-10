@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using ViaYou.Domain.Enums;
 
 namespace ViaYou.Domain.Travels
@@ -12,5 +13,13 @@ namespace ViaYou.Domain.Travels
         public int Min { get; set; }
         public int Max { get; set; }
         public Measure Measure { get; set; }
+
+        public void Update(string name, int min, int max, Measure measure)
+        {
+            Name = name;
+            Min = min;
+            Max = max;
+            Measure = measure;
+        }
     }
 }
