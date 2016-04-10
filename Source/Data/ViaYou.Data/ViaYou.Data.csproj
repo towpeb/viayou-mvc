@@ -76,6 +76,7 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ContainerRepository.cs" />
     <Compile Include="Repositories\TravelRepository.cs" />
+    <Compile Include="TransactionManager.cs" />
     <Compile Include="ViaYouDataContext.cs" />
   </ItemGroup>
   <ItemGroup>

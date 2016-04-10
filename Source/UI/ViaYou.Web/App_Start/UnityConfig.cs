@@ -29,6 +29,9 @@ namespace ViaYou.Web
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<ITravelRepository, TravelRepository>();
 
+            //service
+            container.RegisterType<ITransactionManager, TransactionManager>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
