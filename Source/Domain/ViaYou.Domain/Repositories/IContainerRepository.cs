@@ -8,5 +8,6 @@ namespace ViaYou.Domain.Repositories
         void Add(Container containedIn);
         Container GetById(int id);
         IQueryable<Container> GetAll();
+        void Delete(int id);
     }
 }

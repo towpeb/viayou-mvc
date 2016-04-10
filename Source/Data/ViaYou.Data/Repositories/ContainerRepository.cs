@@ -13,12 +13,18 @@ namespace ViaYou.Data.Repositories
         public void Add(Container containedIn)
         {
             Context.Containers.Add(containedIn);
-            SaveChanges();
         }
 
         public IQueryable<Container> GetAll()
         {
             return Context.Containers;
+        }
+
+        public void Delete(int id)
+        {
+            var container = new Container() {Id = id};
+            Context.Containers.Attach(container);
+            Context.Containers.Remove(container);
         }
 
         public Container GetById(int id)
