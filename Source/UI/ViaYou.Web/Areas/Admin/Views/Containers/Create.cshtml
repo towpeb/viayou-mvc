@@ -12,10 +12,13 @@
     @Html.EditorForModel()
 }
 
-<script>
-    $(function () {
-        $('#s2-measureType').select2({
-            placeHolder: 'select a measure type'
+@section scripts
+{
+    @*<script>
+        $(function() {
+            $('#s2-measureType').select2({
+                placeHolder: 'select a measure type'
+            });
         });
-    });
-</script>
+    </script>*@
+}
