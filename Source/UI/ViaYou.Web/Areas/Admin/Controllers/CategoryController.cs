@@ -17,6 +17,29 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             _categoryRepository = categoryRepository;
         }
 
+        [HttpGet]
+        [Route("delete/category/{id}")]
+        public ActionResult Delete(int id)
+        {
+            var category = _categoryRepository.GetById(id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var category = _categoryRepository.GetById(id);
+            return View(new CategoryViewModel() { Name=category.Name } );
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, CategoryViewModel data)
+        {
+            _categoryRepository.Update(id, data.Name);
+            return RedirectToAction("Index");
+        }
+
         // GET: Admin/Category
         public ActionResult Index()
         {

@@ -8,5 +8,6 @@ namespace ViaYou.Domain.Repositories
         void Add(ContainedIn containedIn);
         ContainedIn GetById(int id);
         IQueryable<ContainedIn> GetAll();
+        
     }
 }

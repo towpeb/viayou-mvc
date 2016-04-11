@@ -15,18 +15,20 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th></th>
+        <th class="text-right">Action</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-           
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="text-right">
+                <a href="category/edit/@item.Id" class="btn btn-primary">Edit</a>
+                <a href="delete/@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
 
 </table>
