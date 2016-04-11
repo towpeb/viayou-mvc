@@ -13,7 +13,6 @@ namespace ViaYou.Data.Repositories
         public void Add(Category category)
         {
             Context.Categories.Add(category);
-            SaveChanges();
         }
 
         public IQueryable<Category> GetAll()

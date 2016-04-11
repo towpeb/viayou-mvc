@@ -10,10 +10,9 @@ namespace ViaYou.Domain
 {
     public class HTMLContent
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Text { get; set; }
-        [Required]
         public Region Region { get; set; }
         public int Order { get; set; }
     }

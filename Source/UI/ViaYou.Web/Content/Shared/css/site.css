@@ -4,6 +4,14 @@
     background-size: cover;
 }
 
+.edit-button {
+    color: #7FB661
+}
+
+.delete-button {
+    color: #dd5a43
+}
+
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;

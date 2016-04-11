@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using ViaYou.Web.App_Start;
 
 namespace ViaYou.Web
 {
@@ -14,6 +15,7 @@ namespace ViaYou.Web
         {
             AreaRegistration.RegisterAllAreas();
             UnityConfig.RegisterComponents();
+            AutomapperConfig.Execute();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

@@ -16,8 +16,8 @@ namespace ViaYou.Domain.Travels
             Id = id;
             Date = date;
             Grade = grade;
-            Origin = origin;
-            Destination = destination;
+            CityOrigin = origin;
+            CityDestination = destination;
             Customer = customer;
             Traveler = traveler;
             Packages = packages;
@@ -26,14 +26,21 @@ namespace ViaYou.Domain.Travels
         [Required]
         public DateTime Date { get; set; }
         public decimal Grade { get; set; }
-        [Required]
-        public City Origin { get; set; }
-        [Required]
-        public City Destination { get; set; }
+
+        public int? CustomerId { get; set; }
         [Required]
         public ApplicationUser Customer { get; set; }
-        [Required]
+
+        public int? TravelerId { get; set; }
         public ApplicationUser Traveler { get; set; }
+
+        public int CityOriginId { get; set; }
+        [Required]
+        public City CityOrigin { get; set; }
+
+        public int? CityDestinationId { get; set; }
+        public City CityDestination { get; set; }
+
         public ICollection<Package> Packages { get; set; }
     }
 }
