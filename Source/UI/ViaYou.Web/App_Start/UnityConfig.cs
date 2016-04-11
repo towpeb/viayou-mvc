@@ -25,9 +25,12 @@ namespace ViaYou.Web
             container.RegisterType<IAuthenticationManager>(new InjectionFactory(o => HttpContext.Current.GetOwinContext().Authentication));
 
             //repositories
-            container.RegisterType<IContainedInRepository, ContainedInRepository>();
+            container.RegisterType<IContainerRepository, ContainerRepository>();
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<ITravelRepository, TravelRepository>();
+
+            //service
+            container.RegisterType<ITransactionManager, TransactionManager>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

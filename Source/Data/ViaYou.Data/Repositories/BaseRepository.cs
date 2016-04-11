@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity.Validation;
+using System.Linq;
 using Microsoft.Practices.Unity;
 
 namespace ViaYou.Data.Repositories
@@ -6,18 +7,6 @@ namespace ViaYou.Data.Repositories
     public class BaseRepository
     {
         [Dependency]
-        public ViaYouDataContext Context { get; set; }
-
-        public void SaveChanges()
-        {
-            try
-            {
-                Context.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-
-            }
-        }
+        public ViaYouDataContext Context { get; set; }       
     }
 }
