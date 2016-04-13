@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,17 +12,31 @@ namespace ViaYou.Web.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        ICategoryRepository _categoryRepository;
-        public CategoryController(ICategoryRepository categoryRepository)
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly ITransactionManager _transactionManager;
+
+        public CategoryController(ICategoryRepository categoryRepository, ITransactionManager transactionManager)
         {
             _categoryRepository = categoryRepository;
+            _transactionManager = transactionManager;
         }
 
         [HttpGet]
-        [Route("delete/category/{id}")]
         public ActionResult Delete(int id)
         {
-            var category = _categoryRepository.GetById(id);
+            var container = _categoryRepository.GetById(id);
+
+            if (container == null)
+                return HttpNotFound("Category not found.");
+
+            return View("Delete", Mapper.Map<CategoryViewModel>(container));
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmDelete(int id)
+        {
+            _categoryRepository.Delete(id);
+            _transactionManager.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -29,14 +44,21 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var category = _categoryRepository.GetById(id);
-            return View(new CategoryViewModel() { Name=category.Name } );
+            if (category == null)
+                return HttpNotFound("Category not found");
+            return View(Mapper.Map<CategoryViewModel>(category));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CategoryViewModel data)
+        public ActionResult Edit(CategoryViewModel data)
         {
-            _categoryRepository.Update(id, data.Name);
+            var container = _categoryRepository.GetById(data.Id);
+            if (container == null)
+                return HttpNotFound("Category not found.");
+            container.Update(data.Name);
+            _transactionManager.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -54,10 +76,11 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(CategoryViewModel data)
         {
-            if (!ModelState.IsValid)
-                return View(data);
-
-            _categoryRepository.Add(new Category(data.Name));
+            _categoryRepository.Add(new Category
+            {
+                Name = data.Name,
+            });
+            _transactionManager.SaveChanges();
             return RedirectToAction("Index");
         }
 

@@ -8,7 +8,6 @@ namespace ViaYou.Domain.Repositories
         void Add(Category category);
         Category GetById(int id);
         IQueryable<Category> GetAll();
-        void Delete(Category category);
-        void Update(int id, string name);
+        void Delete(int id);
     }
 }

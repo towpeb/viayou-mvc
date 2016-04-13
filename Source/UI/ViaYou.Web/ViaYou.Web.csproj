@@ -281,20 +281,18 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\EditorTemplate\CategoryViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\EditorTemplates\CategoryViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Content\Shared\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Shared\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Shared\fonts\glyphicons-halflings-regular.woff" />
-<<<<<<< HEAD
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-=======
     <Content Include="Areas\Admin\Views\Containers\Index.cshtml" />
     <Content Include="Grid.mvc.readme" />
     <Content Include="Areas\Admin\Views\Containers\Create.cshtml" />
@@ -304,7 +302,6 @@
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.min.js" />
->>>>>>> cbf3ac0d9adcfe9be991d1eae5fc4e3e7fd8a382
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
