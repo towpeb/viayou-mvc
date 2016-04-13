@@ -17,12 +17,17 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         //private ViaYouDataContext db = new ViaYouDataContext();
         private ITravelRepository _travelsRepository;
 
+        public TravelsController(ITravelRepository travelRepository)
+        {
+            _travelsRepository = travelRepository;
+        }
+
         // GET: Admin/Travels
         public ActionResult Index()
         {
             //var travels = db.Travels.Include(t => t.CityDestination).Include(t => t.CityOrigin);
-            var travels = _travelsRepository.GetAll();
-            return View(travels.ToList());
+            //var travels = _travelsRepository.GetAll();
+            return View(_travelsRepository.GetAll().ToList());
         }
 
         // GET: Admin/Travels/Details/5
