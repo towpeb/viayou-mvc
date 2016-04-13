@@ -25,5 +25,7 @@ namespace ViaYou.Data
         public DbSet<Travel> Travels { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Container> Containers { get; set; }
+
+        public System.Data.Entity.DbSet<ViaYou.Domain.City> Cities { get; set; }
     }
 }

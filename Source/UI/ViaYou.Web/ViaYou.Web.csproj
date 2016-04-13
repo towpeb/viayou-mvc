@@ -206,6 +206,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContainersController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TravelsController.cs" />
     <Compile Include="Areas\Admin\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ContainerViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -296,6 +297,13 @@
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Travels\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Travels\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Travels\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Travels\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Travels\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
