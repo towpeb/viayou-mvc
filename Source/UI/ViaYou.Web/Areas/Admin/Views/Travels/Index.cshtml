@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ViaYou.Domain.Travels.Travel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Travels";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -24,12 +24,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Grade)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TravelerId)
-        </th>
+       
         <th></th>
     </tr>
 

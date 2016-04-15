@@ -27,5 +27,7 @@ namespace ViaYou.Data
         public DbSet<Container> Containers { get; set; }
 
         public System.Data.Entity.DbSet<ViaYou.Domain.City> Cities { get; set; }
+
+        public DbSet<ViaYou.Domain.Country> Countries{ get; set; }
     }
 }

@@ -14,42 +14,47 @@ namespace ViaYou.Web.Areas.Admin.Controllers
 {
     public class TravelsController : Controller
     {
-        //private ViaYouDataContext db = new ViaYouDataContext();
         private ITravelRepository _travelsRepository;
+        private ICountryRepository _countryRepository;
+        private ICityRepository _cityRepository;
 
-        public TravelsController(ITravelRepository travelRepository)
+
+        public TravelsController(ITravelRepository travelRepository, ICountryRepository countryRepository, ICityRepository cityRepository)
         {
             _travelsRepository = travelRepository;
+            _countryRepository = countryRepository;
+            _cityRepository = cityRepository;
         }
 
         // GET: Admin/Travels
         public ActionResult Index()
         {
             //var travels = db.Travels.Include(t => t.CityDestination).Include(t => t.CityOrigin);
-            //var travels = _travelsRepository.GetAll();
             return View(_travelsRepository.GetAll().ToList());
+
         }
 
-        // GET: Admin/Travels/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Travel travel = db.Travels.Find(id);
-        //    if (travel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(travel);
-        //}
+        //GET: Admin/Travels/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //Travel travel = db.Travels.Find(id);
+            Travel travel = _travelsRepository.GetById(id);
+            if (travel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(travel);
+        }
 
         //// GET: Admin/Travels/Create
         //public ActionResult Create()
         //{
-        //    ViewBag.CityDestinationId = new SelectList(db.Cities, "Id", "Name");
-        //    ViewBag.CityOriginId = new SelectList(db.Cities, "Id", "Name");
+        //    ViewBag.CityDestinationId = new SelectList(_countryRepository.GetAll(), "Id", "Name");
+        //    ViewBag.CityOriginId = new SelectList(_cityRepository.GetAll(), "Id", "Name");
         //    return View();
         //}
 

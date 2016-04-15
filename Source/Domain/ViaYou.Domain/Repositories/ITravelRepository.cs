@@ -8,5 +8,6 @@ namespace ViaYou.Domain.Repositories
         void Add(Travel travel);
         Travel GetById(int id);
         IQueryable<Travel> GetAll();
+        Travel GetById(int? id);
     }
 }

@@ -35,7 +35,7 @@ namespace ViaYou.Domain.Travels
         public ApplicationUser Traveler { get; set; }
 
         public int CityOriginId { get; set; }
-        [Required]
+       [Required]
         public City CityOrigin { get; set; }
 
         public int? CityDestinationId { get; set; }
