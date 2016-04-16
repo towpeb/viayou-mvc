@@ -37,11 +37,11 @@ namespace ViaYou.Data.Migrations
             //{
             //    Date = DateTime.Today,
             //    Grade = 4.5m,
-            //    Customer = new Domain.Users.ApplicationUser { FirstName = "Gareth", UserName = "G.B",LastName="Bale",MiddleName="11" },
-            //    Traveler = new Domain.Users.ApplicationUser { FirstName = "Luca", UserName = "L.M",LastName="Modric",MiddleName="19" },
+            //    Customer = new Domain.Users.ApplicationUser { FirstName = "Gareth", UserName = "G.B", LastName = "Bale", MiddleName = "11" },
+            //    Traveler = new Domain.Users.ApplicationUser { FirstName = "Luca", UserName = "L.M", LastName = "Modric", MiddleName = "19" },
             //    CityOrigin = new Domain.City { Name = "La Havana", Code = "10400", Country = new Domain.Country { Name = "Cuba" } },
-            //    CityDestination = new Domain.City { Name = "Madrid", Code = "1000", Country = new Domain.Country { Name = "Cuba" } },
-            //    Packages = new List<Package>(),
+            //    CityDestination = new Domain.City { Name = "Madrid", Code = "1000", Country = new Domain.Country { Name = "Cuba" } }
+                
 
             //});
             context.Countries.AddOrUpdate(
