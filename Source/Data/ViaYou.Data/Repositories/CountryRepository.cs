@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using ViaYou.Domain;
 using ViaYou.Domain.Repositories;
 
-
 namespace ViaYou.Data.Repositories
 {
    public class CountryRepository : BaseRepository,ICountryRepository
