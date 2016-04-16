@@ -29,5 +29,11 @@ namespace ViaYou.Data.Repositories
         {
             return Context.Travels.Find(id);
         }
+
+        public void Update(Travel travel)
+        {
+            Context.Entry(travel).State = System.Data.Entity.EntityState.Modified;
+            Context.SaveChanges();
+        }
     }
 }

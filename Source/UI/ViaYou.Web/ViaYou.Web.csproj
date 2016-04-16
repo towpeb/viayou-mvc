@@ -299,8 +299,6 @@
     <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Travels\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Travels\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Index.cshtml" />

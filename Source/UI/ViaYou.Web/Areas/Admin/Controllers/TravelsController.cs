@@ -18,6 +18,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         private ITravelRepository _travelsRepository;
         private ICountryRepository _countryRepository;
         private ICityRepository _cityRepository;
+        private ITransactionManager _transactionManager;
 
 
         public TravelsController(ITravelRepository travelRepository, ICountryRepository countryRepository, ICityRepository cityRepository)
@@ -30,9 +31,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         // GET: Admin/Travels
         public ActionResult Index()
         {
-            //var travels = db.Travels.Include(t => t.CityDestination).Include(t => t.CityOrigin);
-            return View(_travelsRepository.GetAll().ToList());
-
+           return View(_travelsRepository.GetAll().ToList());
         }
 
         //GET: Admin/Travels/Details/5
@@ -42,7 +41,6 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //Travel travel = db.Travels.Find(id);
             Travel travel = _travelsRepository.GetById(id);
             if (travel == null)
             {
@@ -51,101 +49,44 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             return View(travel);
         }
 
-        //// GET: Admin/Travels/Create
-        public ActionResult Create()
+
+
+
+        //// GET: Admin/Travels/Edit/5
+        public ActionResult Edit(int? id)
         {
-           ViewBag.CityDestinationId = new SelectList(,"Id", "Name");
-           ViewBag.CityOriginId = new SelectList(_cityRepository.GetAll(), "Id", "Name");
-           return View();
-        } 
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Travel travel = _travelsRepository.GetById(id);
+            if (travel == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.CityDestinationId = new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityDestinationId);
+            ViewBag.CityOriginId = new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityOriginId);
+            return View(travel);
+        }
 
-    //// POST: Admin/Travels/Create
-    //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-    //[HttpPost]
-    //[ValidateAntiForgeryToken]
-    //public ActionResult Create([Bind(Include = "Id,Date,Grade,CustomerId,TravelerId,CityOriginId,CityDestinationId")] Travel travel)
-    //{
-    //    if (ModelState.IsValid)
-    //    {
-    //        db.Travels.Add(travel);
-    //        db.SaveChanges();
-    //        return RedirectToAction("Index");
-    //    }
+        // POST: Admin/Travels/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Date,Grade,CustomerId,TravelerId,CityOriginId,CityDestinationId")] Travel travel)
+        {
+            if (ModelState.IsValid)
+            {
+                _travelsRepository.Update(travel);
+                return Redirect("Index");
+            }
+            ViewBag.CityDestinationId = new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityDestinationId);
+            ViewBag.CityOriginId = new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityOriginId);
+            return View(travel);
+        }
 
-    //    ViewBag.CityDestinationId = new SelectList(db.Cities, "Id", "Name", travel.CityDestinationId);
-    //    ViewBag.CityOriginId = new SelectList(db.Cities, "Id", "Name", travel.CityOriginId);
-    //    return View(travel);
-    //}
-
-    //// GET: Admin/Travels/Edit/5
-    //public ActionResult Edit(int? id)
-    //{
-    //    if (id == null)
-    //    {
-    //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-    //    }
-    //    Travel travel = db.Travels.Find(id);
-    //    if (travel == null)
-    //    {
-    //        return HttpNotFound();
-    //    }
-    //    ViewBag.CityDestinationId = new SelectList(db.Cities, "Id", "Name", travel.CityDestinationId);
-    //    ViewBag.CityOriginId = new SelectList(db.Cities, "Id", "Name", travel.CityOriginId);
-    //    return View(travel);
-    //}
-
-    //// POST: Admin/Travels/Edit/5
-    //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-    //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-    //[HttpPost]
-    //[ValidateAntiForgeryToken]
-    //public ActionResult Edit([Bind(Include = "Id,Date,Grade,CustomerId,TravelerId,CityOriginId,CityDestinationId")] Travel travel)
-    //{
-    //    if (ModelState.IsValid)
-    //    {
-    //        db.Entry(travel).State = EntityState.Modified;
-    //        db.SaveChanges();
-    //        return RedirectToAction("Index");
-    //    }
-    //    ViewBag.CityDestinationId = new SelectList(db.Cities, "Id", "Name", travel.CityDestinationId);
-    //    ViewBag.CityOriginId = new SelectList(db.Cities, "Id", "Name", travel.CityOriginId);
-    //    return View(travel);
-    //}
-
-    //// GET: Admin/Travels/Delete/5
-    //public ActionResult Delete(int? id)
-    //{
-    //    if (id == null)
-    //    {
-    //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-    //    }
-    //    Travel travel = db.Travels.Find(id);
-    //    if (travel == null)
-    //    {
-    //        return HttpNotFound();
-    //    }
-    //    return View(travel);
-    //}
-
-    //// POST: Admin/Travels/Delete/5
-    //[HttpPost, ActionName("Delete")]
-    //[ValidateAntiForgeryToken]
-    //public ActionResult DeleteConfirmed(int id)
-    //{
-    //    Travel travel = db.Travels.Find(id);
-    //    db.Travels.Remove(travel);
-    //    db.SaveChanges();
-    //    return RedirectToAction("Index");
-    //}
-
-    //protected override void Dispose(bool disposing)
-    //{
-    //    if (disposing)
-    //    {
-    //        db.Dispose();
-    //    }
-    //    base.Dispose(disposing);
-    //}
-}
+        //// GET: Admin/Travels/Delete/5
+       
+    }
 }
