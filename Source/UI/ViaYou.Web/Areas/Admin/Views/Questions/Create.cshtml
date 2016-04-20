@@ -1,0 +1,22 @@
+﻿@model ViaYou.Web.Areas.Admin.Models.QuestionViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorForModel()
+}
+
+@section scripts
+{
+    @*<script>
+           
+        </script>*@
+}
+
+

@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using ViaYou.Domain.Users;
 using System.Data.Entity;
 using ViaYou.Domain.Travels;
+using ViaYou.Domain;
 
 namespace ViaYou.Data
 {
@@ -24,6 +25,9 @@ namespace ViaYou.Data
 
         public DbSet<Travel> Travels { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Advice> Advices { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Question> Questions { get; set; }
         public DbSet<Container> Containers { get; set; }
     }
 }
