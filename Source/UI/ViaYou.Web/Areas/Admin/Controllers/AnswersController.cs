@@ -47,8 +47,6 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             var answer = _answerRepository.GetById(id);
             if (answer == null)
                 return HttpNotFound("answer not found");
-            var questions = new QuestionRepository();
-            ViewBag.questions = questions.GetAll().ToList();
             return View(Mapper.Map<AnswerViewModel>(answer));
         }
 
