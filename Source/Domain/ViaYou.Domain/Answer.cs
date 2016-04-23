@@ -1,4 +1,6 @@
-﻿namespace ViaYou.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ViaYou.Domain
 {
     public class Answer
     {
@@ -13,6 +15,7 @@
         }
         public int Id { get; set; }
         public string Text { get; set; }
+        [Required]
         public Question Question { get; set; }
         public void Update(string text, Question customer)
         {
