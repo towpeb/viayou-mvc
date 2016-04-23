@@ -71,8 +71,6 @@ namespace ViaYou.Web.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            var questions = new QuestionRepository();
-            ViewBag.questions = questions.GetAll().ToList();
             return View();
         }
 

@@ -86,7 +86,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         }
 
         [AllowAnonymous]
-        public JsonResult Retrievequestions(string searchTerm, int pageSize, int pageNum)
+        public JsonResult RetrieveQuestions(string searchTerm, int pageSize, int pageNum)
         {
             var questions = _questionRepository.GetAll();
             var results = questions.Where(c => c.Text.Contains(searchTerm)).Select(c => new { id = c.Id, text = c.Text }).ToList();
