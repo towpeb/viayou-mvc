@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using ViaYou.Domain;
 using ViaYou.Infraestructure.Mapping;
 
@@ -14,6 +15,7 @@ namespace ViaYou.Web.Areas.Admin.Models
         [Required]
         public string Text { get; set; }
         [Required]
-        public Question Question { get; set; }
+        public int? QuestionId { get; set; }
+        public IEnumerable<SelectListItem> AvailableQuestions { get; internal set; }
     }
 }

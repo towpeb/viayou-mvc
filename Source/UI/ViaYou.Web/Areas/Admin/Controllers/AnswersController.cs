@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using ViaYou.Data.Repositories;
+using AutoMapper.QueryableExtensions;
 using ViaYou.Domain;
 using ViaYou.Domain.Repositories;
 using ViaYou.Web.Areas.Admin.Models;
+using ViaYou.Web.Helpers;
 
 namespace ViaYou.Web.Areas.Admin.Controllers
 {
@@ -15,10 +13,14 @@ namespace ViaYou.Web.Areas.Admin.Controllers
     {
         private readonly IAnswerRepository _answerRepository;
         private readonly ITransactionManager _transactionManager;
+        private readonly IQuestionRepository _questionRepository;
 
-        public AnswersController(IAnswerRepository answerRepository, ITransactionManager transactionManager)
+        public AnswersController(IAnswerRepository answerRepository,
+                                 IQuestionRepository questionRepository,
+                                 ITransactionManager transactionManager)
         {
             _answerRepository = answerRepository;
+            _questionRepository = questionRepository;
             _transactionManager = transactionManager;
         }
 
@@ -45,19 +47,30 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var answer = _answerRepository.GetById(id);
+            var questions = _questionRepository.GetAll().Project().To<QuestionViewModel>();
+
             if (answer == null)
                 return HttpNotFound("answer not found");
-            return View(Mapper.Map<AnswerViewModel>(answer));
+
+            var data = Mapper.Map<AnswerViewModel>(answer);
+            data.AvailableQuestions = questions.CreateSelectListItems(q => q.Identifier, q => q.Text);
+
+            return View(data);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AnswerViewModel data)
         {
-            var container = _answerRepository.GetById(data.Id);
-            if (container == null)
+            if (!ModelState.IsValid)
+                return View(data);
+
+            var answer = _answerRepository.GetById(data.Id);
+
+            if (answer == null)
                 return HttpNotFound("answer not found.");
-            container.Update(data.Text, data.Question);
+
+            answer.Update(data.Text, _questionRepository.GetById(data.QuestionId.Value));
             _transactionManager.SaveChanges();
 
             return RedirectToAction("Index");
@@ -71,17 +84,25 @@ namespace ViaYou.Web.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var questions = _questionRepository.GetAll().ToList();
+            return View(new AnswerViewModel
+            {
+                AvailableQuestions = questions.CreateSelectListItems(x => x.Identifier, x => x.Id.ToString())
+            });
         }
 
         [HttpPost]
         public ActionResult Create(AnswerViewModel data)
         {
+            if (!ModelState.IsValid)
+                return View(data);
+
             _answerRepository.Add(new Answer
             {
                 Text = data.Text,
-                Question = data.Question
+                Question = _questionRepository.GetById(data.QuestionId.Value)
             });
+
             _transactionManager.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -93,7 +114,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             var results = answers.Where(c => c.Text.Contains(searchTerm)).Select(c => new { id = c.Id, text = c.Text }).ToList();
             return new JsonResult
             {
-                Data = new { Total = results.Count(), Results = results },
+                Data = new { Total = results.Count, Results = results },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }

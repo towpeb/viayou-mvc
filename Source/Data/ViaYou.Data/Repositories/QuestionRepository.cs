@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +11,24 @@ namespace ViaYou.Data.Repositories
 {
     public class QuestionRepository : BaseRepository, IQuestionRepository
     {
-        public void Add(Question advice)
+        public void Add(Question question)
         {
-            Context.Questions.Add(advice);
+            Context.Questions.Add(question);
         }
 
         public IQueryable<Question> GetAll()
         {
-            return Context.Questions;
+            return Context.Questions
+                            .Include(q=>q.Answers)
+                            .AsQueryable();
         }
 
         public Question GetById(int id)
         {
-            return Context.Questions.FirstOrDefault(c => c.Id == id);
+            return Context.Questions
+                .Where(c => c.Id == id)
+                .Include(q=>q.Answers)
+                .FirstOrDefault();
         }
 
         public void Delete(int id)
