@@ -22,7 +22,7 @@
 
     </dl>
 
-    @using (Html.BeginForm("ConfirmDelete", "Question", FormMethod.Post))
+    @using (Html.BeginForm("ConfirmDelete", "Questions", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
