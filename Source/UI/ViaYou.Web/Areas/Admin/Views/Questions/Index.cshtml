@@ -17,7 +17,7 @@
                 <div class="input-group custom-search-form col-lg-3 pull-right">
                     <input type="text" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
-                        <a class="btn btn-default" type="button">
+                        <a class="btn btn-default">
                             <i class="fa fa-search"></i>
                         </a>
                     </span>
@@ -25,25 +25,29 @@
             </div>
 
             @Html.Grid(Model).Columns(columns =>
-       {
-       columns.Add(c => c.Text)
-           .Titled("Text")
-           .Css("text-center")
-           .Sortable(true);
-       columns.Add()
-           .Encoded(false)
-           .Sanitized(false)
-           .Css("text-center")
-           .RenderValueAs(c =>
-        @<div>
-            <a href="@Url.Action("Edit", new {c.Id})">
-                <i class="fa fa-pencil edit-button"></i>
-            </a>
-            <a href="@Url.Action("Delete", new {c.Id})">
-                <i class="fa fa-trash delete-button"></i>
-            </a>
-        </div>);
-       }).WithPaging(5)
+            {
+                columns.Add(c => c.Identifier)
+                    .Titled("Identifier")
+                    .Css("text-center")
+                    .Sortable(true);
+                columns.Add(c => c.Text)
+                    .Titled("Text")
+                    .Css("text-center")
+                    .Sortable(true);
+                columns.Add()
+                    .Encoded(false)
+                    .Sanitized(false)
+                    .Css("text-center")
+                    .RenderValueAs(c =>
+                        @<div>
+                            <a href="@Url.Action("Edit", new {c.Id})">
+                                <i class="fa fa-pencil edit-button"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", new {c.Id})">
+                                <i class="fa fa-trash delete-button"></i>
+                            </a>
+                        </div>);
+            }).WithPaging(5)
         </div>
     </div>
 </div>

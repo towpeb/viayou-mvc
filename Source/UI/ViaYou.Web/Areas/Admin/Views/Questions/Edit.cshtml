@@ -11,3 +11,10 @@
 
     @Html.EditorForModel()
 }
+@section specific_scripts{
+    <script>
+        $(function() {
+            $('#SelectedAnswersIds').select2();
+        });
+    </script>
+}
