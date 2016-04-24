@@ -1,7 +1,7 @@
 ﻿@model ViaYou.Web.Areas.Admin.Models.AnswerViewModel
 
 <div class="row">
-    <div class="form-horizontal">
+    <div class="col-md-10 form-horizontal">
         @if (Model == null)
         {
             <h4>Create Answer</h4>
@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Text, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Text, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.QuestionId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.QuestionId, Model.AvailableQuestions, new { @class = "form-control" })
+                <select id="QuestionId" name="QuestionId" class="select2 form-control">
+                    @foreach (var answer in Model.AvailableQuestions)
+                    {
+                        <option value="@answer.Value" selected="@answer.Selected">@answer.Text</option>
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.QuestionId, "", new { @class = "text-danger" })
             </div>
         </div>
