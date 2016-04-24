@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,16 @@ namespace ViaYou.Data.Repositories
 
         public IQueryable<Answer> GetAll()
         {
-            return Context.Answers;
+            return Context.Answers
+                .Include(a=>a.Question);
         }
 
         public Answer GetById(int id)
         {
-            return Context.Answers.FirstOrDefault(c => c.Id == id);
+            return Context.Answers
+                .Where(c => c.Id == id)
+                .Include(a => a.Question)
+                .FirstOrDefault();
         }
 
         public void Delete(int id)
