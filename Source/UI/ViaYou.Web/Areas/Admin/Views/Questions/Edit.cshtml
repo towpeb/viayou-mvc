@@ -10,11 +10,19 @@
     @Html.AntiForgeryToken()
 
     @Html.EditorForModel()
+
+    <div class="form-group">
+        <div class="col-md-offset-2">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
 }
 @section specific_scripts{
     <script>
         $(function() {
-            $('#SelectedAnswersIds').select2();
+            $('#SelectedAnswersIds').select2({
+                placeholder: 'select answers for this question...',
+            });
         });
     </script>
 }

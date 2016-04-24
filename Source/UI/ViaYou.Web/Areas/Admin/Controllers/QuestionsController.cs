@@ -51,8 +51,8 @@ namespace ViaYou.Web.Areas.Admin.Controllers
                 return HttpNotFound("question not found");
 
             var data = Mapper.Map<QuestionViewModel>(question);
-            data.AvailableAnswers = answers.CreateSelectListItems(a => a.Text, a => a.Id.ToString());
             data.SelectedAnswersIds = question.Answers.Select(a => a.Id).ToList();
+            data.AvailableAnswers = answers.CreateSelectListItems(a => a.Text, a => a.Id.ToString(), a=>data.SelectedAnswersIds.Contains(a.Id));
 
             return View(data);
         }
