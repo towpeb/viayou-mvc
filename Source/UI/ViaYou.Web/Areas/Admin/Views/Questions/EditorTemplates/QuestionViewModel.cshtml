@@ -32,7 +32,7 @@
                         <select id="SelectedAnswersIds" name="SelectedAnswersIds" class="select2 form-control" multiple="true">
                             @foreach (var answer in Model.AvailableAnswers)
                             {
-                                <option value="@answer.Value" selected="@answer.Selected">@answer.Text</option>
+                                <option value="@answer.Value" @(answer.Selected ? "selected" : "")>@answer.Text</option>
                             }
                         </select>
                         @Html.ValidationMessageFor(model => model.SelectedAnswersIds)

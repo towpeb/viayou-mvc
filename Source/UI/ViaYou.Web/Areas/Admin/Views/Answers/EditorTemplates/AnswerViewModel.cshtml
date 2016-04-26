@@ -26,19 +26,14 @@
             @Html.LabelFor(model => model.QuestionId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <select id="QuestionId" name="QuestionId" class="select2 form-control">
+                    <option value="" selected></option>
                     @foreach (var answer in Model.AvailableQuestions)
                     {
-                        <option value="@answer.Value" selected="@answer.Selected">@answer.Text</option>
+                        <option value="@answer.Value" @(answer.Selected ? "selected" : "")>@answer.Text</option>
                     }
                 </select>
                 @Html.ValidationMessageFor(model => model.QuestionId, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-success" />
-            </div>
-        </div>
+        </div>       
     </div>
 </div>

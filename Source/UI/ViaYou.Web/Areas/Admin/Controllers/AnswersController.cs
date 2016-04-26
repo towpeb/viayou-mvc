@@ -43,17 +43,16 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
         public ActionResult Edit(int id)
         {
             var answer = _answerRepository.GetById(id);
             var questions = _questionRepository.GetAll().Project().To<QuestionViewModel>();
 
             if (answer == null)
-                return HttpNotFound("answer not found");
+                return HttpNotFound("Answer not found.");
 
             var data = Mapper.Map<AnswerViewModel>(answer);
-            data.AvailableQuestions = questions.CreateSelectListItems(q => q.Identifier, q => q.Text);
+            data.AvailableQuestions = questions.CreateSelectListItems(q => q.Identifier, q => q.Text, q=>q.Id == answer.Question?.Id);
 
             return View(data);
         }
@@ -68,18 +67,21 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             var answer = _answerRepository.GetById(data.Id);
 
             if (answer == null)
-                return HttpNotFound("answer not found.");
+                return HttpNotFound("Answer not found.");
 
-            answer.Update(data.Text, _questionRepository.GetById(data.QuestionId.Value));
+            answer.Update(data.Text, data.QuestionId != null ? _questionRepository.GetById(data.QuestionId.Value) : null);
             _transactionManager.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
         // GET: Admin/answer
-        public ActionResult Index()
+        public ActionResult Index(string term="")
         {
-            return View(_answerRepository.GetAll().ToList());
+            return View(_answerRepository.GetAll()
+                .ToList()
+                .Where(a => a.Terms()
+                    .Any(t => t.Contains(term))));
         }
 
         public ActionResult Create()
@@ -87,7 +89,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             var questions = _questionRepository.GetAll().ToList();
             return View(new AnswerViewModel
             {
-                AvailableQuestions = questions.CreateSelectListItems(x => x.Identifier, x => x.Id.ToString())
+                AvailableQuestions = questions.CreateSelectListItems(x => x.Identifier, x => x.Id.ToString(), x=>false)
             });
         }
 
@@ -100,7 +102,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             _answerRepository.Add(new Answer
             {
                 Text = data.Text,
-                Question = _questionRepository.GetById(data.QuestionId.Value)
+                Question = data.QuestionId != null ? _questionRepository.GetById(data.QuestionId.Value) : null
             });
 
             _transactionManager.SaveChanges();
