@@ -4,9 +4,9 @@ namespace ViaYou.Domain.Repositories
 {
     public interface IAnswerRepository
     {
-        Answer GetById(string id);
+        Answer GetById(int id);
         void Add(Answer answer);
         IQueryable<Answer> GetAll();
-        bool Add(Answer user, string password);
+        void Delete(int id);
     }
 }

@@ -44,11 +44,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Libraries\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\..\..\Libraries\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
       <Private>True</Private>
@@ -203,17 +198,24 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdvicesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AnswersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContainersController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
+    <Compile Include="Areas\Admin\Models\AdviceViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\AnswerViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ContainerViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\QuestionViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\SelectListHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -236,6 +238,7 @@
     <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\Images\background.jpg" />
     <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\select2\select2-bootstrap.css" />
     <Content Include="Content\select2\select2-spinner.gif" />
     <Content Include="Content\select2\select2.css" />
     <Content Include="Content\select2\select2.png" />
@@ -280,19 +283,30 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\EditorTemplates\CategoryViewModel.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\EditorTemplates\CategoryViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
     <Content Include="Content\Shared\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Shared\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Shared\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Areas\Admin\Views\Categories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Categories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Advices\EditorTemplates\AdviceViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Advices\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Advices\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Advices\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Advices\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Answers\EditorTemplates\AnswerViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Answers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Answers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Answers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Answers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\EditorTemplates\QuestionViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Containers\Index.cshtml" />
     <Content Include="Grid.mvc.readme" />
     <Content Include="Areas\Admin\Views\Containers\Create.cshtml" />

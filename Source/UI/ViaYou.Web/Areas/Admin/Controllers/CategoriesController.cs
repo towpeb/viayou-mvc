@@ -10,12 +10,12 @@ using ViaYou.Web.Areas.Admin.Models;
 
 namespace ViaYou.Web.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoriesController : Controller
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly ITransactionManager _transactionManager;
 
-        public CategoryController(ICategoryRepository categoryRepository, ITransactionManager transactionManager)
+        public CategoriesController(ICategoryRepository categoryRepository, ITransactionManager transactionManager)
         {
             _categoryRepository = categoryRepository;
             _transactionManager = transactionManager;
@@ -87,8 +87,8 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         [AllowAnonymous]
         public JsonResult RetrieveCategories(string searchTerm, int pageSize, int pageNum)
         {
-            var cities = _categoryRepository.GetAll();
-            var results = cities.Where(c => c.Name.Contains(searchTerm)).Select(c => new { id = c.Id, text = c.Name }).ToList();
+            var categories = _categoryRepository.GetAll();
+            var results = categories.Where(c => c.Name.Contains(searchTerm)).Select(c => new { id = c.Id, text = c.Name }).ToList();
             return new JsonResult
             {
                 Data = new { Total = results.Count(), Results = results },
