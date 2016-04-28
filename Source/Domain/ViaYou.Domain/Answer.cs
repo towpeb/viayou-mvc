@@ -19,18 +19,28 @@ namespace ViaYou.Domain
         public int Id { get; set; }
         [Required]
         public string Text { get; set; }
-        [Required]
         public Question Question { get; set; }
-        public void Update(string text, Question customer)
+        public void Update(string text, Question question)
         {
-            this.Text = text;
-            this.Question = customer;
+            Text = text;
+            if (question != null)
+                Question = question;
+        }
+        public string GetQuestion
+        {
+            get
+            {
+                if (Question != null)
+                    return Question.Identifier;
+                else
+                    return "";
+            }
         }
 
         public IEnumerable<string> Terms()
         {
             yield return Text;
-            yield return Question?.Identifier??"";
+            yield return Question?.Identifier ?? "";
         }
     }
 }

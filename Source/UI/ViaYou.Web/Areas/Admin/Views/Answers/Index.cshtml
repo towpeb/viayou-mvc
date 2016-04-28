@@ -8,7 +8,7 @@
 <div class="row" style="margin: 15px">
     <div class="panel panel-default">
         <div class="panel-heading">
-            Advices
+            Answers
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -25,29 +25,29 @@
             </div>
 
             @Html.Grid(Model).Columns(columns =>
-            {
-                columns.Add(c => c.Text)
-                    .Titled("Text")
-                    .Css("text-center")
-                    .Sortable(true);
-                columns.Add(c => c.Question.Identifier)
-                    .Titled("Question")
-                    .Css("text-center")
-                    .Sortable(true);
-                columns.Add()
-                    .Encoded(false)
-                    .Sanitized(false)
-                    .Css("text-center")
-                    .RenderValueAs(c =>
-                        @<div>
-                            <a href="@Url.Action("Edit", new {c.Id})">
-                                <i class="fa fa-pencil edit-button"></i>
-                            </a>
-                            <a href="@Url.Action("Delete", new {c.Id})">
-                                <i class="fa fa-trash delete-button"></i>
-                            </a>
-                        </div>);
-            }).WithPaging(3)
+       {
+       columns.Add(c => c.Text)
+           .Titled("Text")
+           .Css("text-center")
+           .Sortable(true);
+       columns.Add(c => c.GetQuestion)
+           .Titled("Question")
+           .Css("text-center")
+           .Sortable(true);
+       columns.Add()
+           .Encoded(false)
+           .Sanitized(false)
+           .Css("text-center")
+           .RenderValueAs(c =>
+        @<div>
+            <a href="@Url.Action("Edit", new {c.Id})">
+                <i class="fa fa-pencil edit-button"></i>
+            </a>
+            <a href="@Url.Action("Delete", new {c.Id})">
+                <i class="fa fa-trash delete-button"></i>
+            </a>
+        </div>);
+       }).WithPaging(3)
         </div>
     </div>
 </div>

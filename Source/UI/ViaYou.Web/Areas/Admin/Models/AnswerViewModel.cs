@@ -15,7 +15,7 @@ namespace ViaYou.Web.Areas.Admin.Models
         [Required]
         public string Text { get; set; }
         [Required]
-        public int? QuestionId { get; set; }
+        public string QuestionId { get; set; }
         public IEnumerable<SelectListItem> AvailableQuestions { get; internal set; }
     }
 }

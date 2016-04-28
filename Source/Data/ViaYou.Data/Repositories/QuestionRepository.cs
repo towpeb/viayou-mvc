@@ -25,9 +25,18 @@ namespace ViaYou.Data.Repositories
 
         public Question GetById(int id)
         {
-            return Context.Questions
+            var a = Context.Questions
                 .Where(c => c.Id == id)
                 .Include(q=>q.Answers)
+                .FirstOrDefault();
+            return a;
+        }
+
+        public Question GetBy2Id(string id)
+        {
+            return Context.Questions
+                .Where(c => c.Identifier == id)
+                .Include(q => q.Answers)
                 .FirstOrDefault();
         }
 
