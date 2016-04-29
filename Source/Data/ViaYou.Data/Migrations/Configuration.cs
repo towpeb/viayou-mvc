@@ -4,9 +4,12 @@ using ViaYou.Domain.Travels;
 namespace ViaYou.Data.Migrations
 {
     using System;
+    using System.Collections;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Domain;
+    using System.Collections.Generic;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ViaYouDataContext>
     {
@@ -30,6 +33,28 @@ namespace ViaYou.Data.Migrations
               new Container { Name = "Large", Measure = Measure.m }
             );
             //
+            //context.Travels.AddOrUpdate(new Travel
+            //{
+            //    Date = DateTime.Today,
+            //    Grade = 4.5m,
+            //    Customer = new Domain.Users.ApplicationUser { FirstName = "Gareth", UserName = "G.B", LastName = "Bale", MiddleName = "11" },
+            //    Traveler = new Domain.Users.ApplicationUser { FirstName = "Luca", UserName = "L.M", LastName = "Modric", MiddleName = "19" },
+            //    CityOrigin = new Domain.City { Name = "La Havana", Code = "10400", Country = new Domain.Country { Name = "Cuba" } },
+            //    CityDestination = new Domain.City { Name = "Madrid", Code = "1000", Country = new Domain.Country { Name = "Cuba" } }
+                
+
+            //});
+            context.Countries.AddOrUpdate(
+                new Country
+                {
+                    Name = "Cuba",
+                    Code = "10400",
+                    Cities = new List<City>(),
+                });
+            context.Countries.AddOrUpdate(new Country { Name = "España", Code = "10000", Cities = new List<City>() });
+            base.Seed(context);
+
+            context.Cities.AddOrUpdate(new City { Name = "La Havana", Code = "10400" });
         }
     }
 }

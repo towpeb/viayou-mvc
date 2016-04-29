@@ -12,7 +12,7 @@ namespace ViaYou.Data.Repositories
     {
         public void Add(Travel travel)
         {
-            throw new NotImplementedException();
+            Context.Travels.Add(travel);
         }
 
         public IQueryable<Travel> GetAll()
@@ -20,9 +20,20 @@ namespace ViaYou.Data.Repositories
             return Context.Travels;
         }
 
+        public Travel GetById(int? id)
+        {
+            return Context.Travels.Find(id);
+        }
+
         public Travel GetById(int id)
         {
-            throw new NotImplementedException();
+            return Context.Travels.Find(id);
+        }
+
+        public void Update(Travel travel)
+        {
+            Context.Entry(travel).State = System.Data.Entity.EntityState.Modified;
+            Context.SaveChanges();
         }
     }
 }
