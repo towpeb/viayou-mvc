@@ -17,7 +17,6 @@ namespace ViaYou.Domain.Travels
         [MaxLength(40)]
         public string Name { get; set; }
 
-
         public void Update(string name)
         {
             Name = name;

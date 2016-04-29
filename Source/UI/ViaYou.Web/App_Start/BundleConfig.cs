@@ -29,7 +29,8 @@ namespace ViaYou.Web
                 "~/Content/Shared/css/bootstrap.min.css",
                 "~/Content/Shared/css/site.css",
                 "~/Content/Shared/css/login-register.css",
-                "~/Content/select2/select2.css"
+                "~/Content/select2/select2.css",
+                "~/Content/select2/select2-bootstrap.css"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/BasicTemplate/css").Include(

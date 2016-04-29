@@ -24,5 +24,13 @@ namespace ViaYou.Data.Repositories
         {
             return Context.Categories.FirstOrDefault(c => c.Id == id);
         }
+
+        public void Delete(int id)
+        {
+            var container = new Category() { Id = id };
+            Context.Categories.Attach(container);
+            Context.Categories.Remove(container);
+        }
+
     }
 }
