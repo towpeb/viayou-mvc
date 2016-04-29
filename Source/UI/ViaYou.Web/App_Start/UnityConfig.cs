@@ -17,7 +17,7 @@ namespace ViaYou.Web
     {
         public static void RegisterComponents()
         {
-			var container = new UnityContainer();
+            var container = new UnityContainer();
 
             //identity injections
             container.RegisterType<DbContext, ViaYouDataContext>(new HierarchicalLifetimeManager());
@@ -30,6 +30,7 @@ namespace ViaYou.Web
             container.RegisterType<IAdviceRepository, AdviceRepository>();
             container.RegisterType<IAnswerRepository, AnswerRepository>();
             container.RegisterType<IQuestionRepository, QuestionRepository>();
+            container.RegisterType<IHTMLContentRepository, HTMLContentRepository>();
             container.RegisterType<ITravelRepository, TravelRepository>();
 
             //service

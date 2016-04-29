@@ -2,25 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using ViaYou.Domain.Enums;
+using ViaYou.Domain;
+using ViaYou.Infraestructure.Mapping;
 
-namespace ViaYou.Domain
+namespace ViaYou.Web.Areas.Admin.Models
 {
-    public class HTMLContent
+    public class HTMLContentViewModel : IMapFrom<HTMLContent>
     {
         public int Id { get; set; }
         [Required]
         public string Text { get; set; }
         public Region Region { get; set; }
         public int Order { get; set; }
-
-        public void Update(string text, Region region, int order)
-        {
-            Text = text;
-            Region = region;
-            Order = order;
-        }
     }
 }
