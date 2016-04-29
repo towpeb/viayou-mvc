@@ -33,5 +33,16 @@ namespace ViaYou.Domain
         public string TwitterMsg { get; set; }
         public byte[] TwitterImg { get; set; }
         public bool Active { get; set; }
+
+        public void Update(string keywords, string description, string facebookmsg, byte[] facebookimg, string twittermsg, byte[] twitterimg, bool active )
+        {
+            Keywords = keywords;
+            Description = description;
+            FacebookMsg = facebookmsg;
+            FacebookImg = facebookimg;
+            TwitterMsg = twittermsg;
+            TwitterImg = twitterimg;
+            Active = active;
+        }
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="Enums\Measure.cs" />
     <Compile Include="Enums\Region.cs" />
     <Compile Include="HTMLContent.cs" />
+    <Compile Include="Repositories\IKeyWordRepository.cs" />
     <Compile Include="Repositories\ITransactionManager.cs" />
     <Compile Include="KeyWord.cs" />
     <Compile Include="Package.cs" />

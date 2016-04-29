@@ -31,6 +31,7 @@ namespace ViaYou.Web
             container.RegisterType<IAnswerRepository, AnswerRepository>();
             container.RegisterType<IQuestionRepository, QuestionRepository>();
             container.RegisterType<ITravelRepository, TravelRepository>();
+            container.RegisterType<IKeyWordRepository, KeyWordRepository>();
 
             //service
             container.RegisterType<ITransactionManager, TransactionManager>();
