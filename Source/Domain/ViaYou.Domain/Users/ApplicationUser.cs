@@ -22,6 +22,6 @@ namespace ViaYou.Domain.Users
 
         public string MiddleName { get; set; }
 
-        public ICollection<Travel> Travels{ get; set; }
+        public ICollection<Travel> Travels { get; set; }
     }
 }

@@ -29,6 +29,7 @@ namespace ViaYou.Data
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Container> Containers { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
 
         public System.Data.Entity.DbSet<ViaYou.Domain.City> Cities { get; set; }
 
