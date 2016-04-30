@@ -7,7 +7,7 @@ namespace ViaYou.Domain
     {
         public Package()
         {
-            
+
         }
         public Package(int id, Category category, Container containedIn, Travel travel)
         {
@@ -23,5 +23,43 @@ namespace ViaYou.Domain
         public Container ContainedIn { get; set; }
         [Required]
         public Travel Travel { get; set; }
+        public string GetCategory
+        {
+            get
+            {
+                if (Category != null)
+                    return Category.Name;
+                else
+                    return "";
+            }
+        }
+        public string GetConatiner
+        {
+            get
+            {
+                if (ContainedIn != null)
+                    return ContainedIn.Name;
+                else
+                    return "";
+            }
+        }
+
+        public int GetTravel
+        {
+            get
+            {
+                if (Travel != null)
+                    return Travel.Id;
+                else
+                    return 0;
+            }
+        }
+
+        public void Update(Category category, Container containedIn, Travel travel)
+        {
+            Category = category;
+            ContainedIn = containedIn;
+            Travel = travel;
+        }
     }
 }

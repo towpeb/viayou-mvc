@@ -11,5 +11,6 @@ namespace ViaYou.Domain.Repositories
         Package GetById(int id);
         void Add(Package package);
         IQueryable<Package> GetAll();
+        void Delete(int id);
     }
 }

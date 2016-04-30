@@ -20,7 +20,7 @@ namespace ViaYou.Data.Repositories
             return Context.Categories;
         }
 
-        public Category GetById(int id)
+        public Category GetById(int? id)
         {
             return Context.Categories.FirstOrDefault(c => c.Id == id);
         }
