@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +20,20 @@ namespace ViaYou.Data.Repositories
         {
             return Context.Countries;
         }
-        public Country GetById(int? id)
-        {
-            return Context.Countries.Find(id);
-        }
 
-        public Country GetById(int id)
+       public void Delete(int id)
+       {
+           var country = new Country() {Id = id};
+           Context.Countries.Attach(country);
+           Context.Countries.Remove(country);
+       }
+
+       public Country GetById(int id)
         {
-            return Context.Countries.Find(id);
+            return Context.Countries
+                            .Where(c=>c.Id == id)
+                            .Include(x=>x.Cities)
+                            .FirstOrDefault();
         }
     }
 }
