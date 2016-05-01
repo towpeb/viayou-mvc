@@ -25,5 +25,11 @@ namespace ViaYou.Domain
         public string Code { get; set; }
 
         public ICollection<City> Cities { get; set; }
+
+        public void Update(string name, string code)
+        {
+            Name = name;
+            Code = code;
+        }
     }
 }
