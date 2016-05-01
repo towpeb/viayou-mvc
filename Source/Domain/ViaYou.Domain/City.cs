@@ -21,5 +21,12 @@ namespace ViaYou.Domain
         [Required]
         public string Code { get; set; }
         public Country Country { get; set; }
+
+        public void Update(string name, string code, Country country)
+        {
+            Name = name;
+            Code = code;
+            Country = country;
+        }
     }
 }
