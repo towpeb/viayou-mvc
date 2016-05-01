@@ -201,6 +201,7 @@
     <Compile Include="Areas\Admin\Controllers\AdvicesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AnswersController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CitiesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContainersController.cs" />
     <Compile Include="Areas\Admin\Controllers\CountriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Areas\Admin\Models\AdviceViewModel.cs" />
     <Compile Include="Areas\Admin\Models\AnswerViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CategoryViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CityViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ContainerViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CountryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuestionViewModel.cs" />
@@ -329,6 +331,11 @@
     <Content Include="Areas\Admin\Views\Countries\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Countries\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Countries\EditorTemplates\CountryViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Cities\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Cities\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Cities\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Cities\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Cities\EditorTemplates\CityViewModel.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
