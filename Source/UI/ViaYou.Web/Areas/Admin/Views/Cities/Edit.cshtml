@@ -8,7 +8,8 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    <h4>@($"Edit City: {Model.Name}")</h4>
+    <hr />
     @Html.EditorForModel()
 
     <div class="form-group">
@@ -19,7 +20,7 @@
 }
 @section specific_scripts{
     <script>
-        $(function() {
+        $(function () {
             $('#CountryId')
                 .select2({
                     placeholder: 'select a question...'
