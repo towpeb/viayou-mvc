@@ -23,11 +23,12 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         private ITransactionManager _transactionManager;
 
 
-        public TravelsController(ITravelRepository travelRepository, ICountryRepository countryRepository, ICityRepository cityRepository)
+        public TravelsController(ITravelRepository travelRepository, ICountryRepository countryRepository, ICityRepository cityRepository,ITransactionManager transactionManager)
         {
             _travelsRepository = travelRepository;
             _countryRepository = countryRepository;
             _cityRepository = cityRepository;
+            _transactionManager = transactionManager;
         }
 
         // GET: Admin/Travels
