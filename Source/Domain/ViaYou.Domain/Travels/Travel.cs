@@ -9,11 +9,10 @@ namespace ViaYou.Domain.Travels
     {
         public Travel()
         {
-            
+
         }
-        public Travel(int id, DateTime date, decimal grade, City origin, City destination, ApplicationUser customer, ApplicationUser traveler, ICollection<Package> packages)
-        {
-            Id = id;
+        public Travel(DateTime date, decimal grade, City origin, City destination, ApplicationUser customer, ApplicationUser traveler, ICollection<Package> packages)
+        {            
             Date = date;
             Grade = grade;
             CityOrigin = origin;
@@ -35,12 +34,22 @@ namespace ViaYou.Domain.Travels
         public ApplicationUser Traveler { get; set; }
 
         public int CityOriginId { get; set; }
-       [Required]
+        [Required]
         public City CityOrigin { get; set; }
 
         public int? CityDestinationId { get; set; }
         public City CityDestination { get; set; }
 
         public ICollection<Package> Packages { get; set; }
+
+        public void Update(DateTime time, decimal grade, ApplicationUser customer, ApplicationUser traveler, City cityOrigin, City cityDestinatation)
+        {
+            this.Date = time;
+            this.Grade = grade;
+            this.Customer = customer;
+            this.Traveler = traveler;
+            this.CityOrigin = cityOrigin;
+            this.CityDestination = cityDestinatation;
+        }
     }
 }

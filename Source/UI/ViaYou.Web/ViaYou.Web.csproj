@@ -209,6 +209,7 @@
     <Compile Include="Areas\Admin\Controllers\TravelsController.cs" />
     <Compile Include="Areas\Admin\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ContainerViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TravelViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />

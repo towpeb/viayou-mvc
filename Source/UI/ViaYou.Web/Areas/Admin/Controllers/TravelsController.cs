@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -10,6 +11,7 @@ using ViaYou.Data;
 using ViaYou.Data.Repositories;
 using ViaYou.Domain.Repositories;
 using ViaYou.Domain.Travels;
+using ViaYou.Web.Areas.Admin.Models;
 
 namespace ViaYou.Web.Areas.Admin.Controllers
 {
@@ -31,7 +33,9 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         // GET: Admin/Travels
         public ActionResult Index()
         {
-           return View(_travelsRepository.GetAll().ToList());
+            //Return the travel list ordered by date
+            var _travel = from travel in _travelsRepository.GetAll() orderby travel.Date ascending select travel;
+            return View(_travel);
         }
 
         //GET: Admin/Travels/Details/5
@@ -59,34 +63,56 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Travel travel = _travelsRepository.GetById(id);
+
+            var travel = _travelsRepository.GetById(id);
+
             if (travel == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.CityDestinationId = new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityDestinationId);
-            ViewBag.CityOriginId = new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityOriginId);
-            return View(travel);
+               return HttpNotFound("travel not found");
+
+            var data = Mapper.Map<TravelViewModel>(travel);
+
+            data.CityDestinationList= new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityDestinationId);
+            data.CityOriginList= new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityOriginId);
+            
+            return View(data);
         }
 
-        // POST: Admin/Travels/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date,Grade,CustomerId,TravelerId,CityOriginId,CityDestinationId")] Travel travel)
+        public ActionResult Edit(TravelViewModel data)
         {
-            if (ModelState.IsValid)
-            {
-                _travelsRepository.Update(travel);
-                return Redirect("Index");
-            }
-            ViewBag.CityDestinationId = new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityDestinationId);
-            ViewBag.CityOriginId = new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityOriginId);
-            return View(travel);
+            var travel = _travelsRepository.GetById(data.Id);
+
+            if (travel==null)
+               return HttpNotFound("travel not found");
+
+            travel.Update(data.Date, data.Grade, data.Customer, data.Traveler, data.CityOrigin, data.CityDestination);
+            _transactionManager.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
-        //// GET: Admin/Travels/Delete/5
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(TravelViewModel data)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(data);
+            }
+
+            var travel = new Travel(data.Date, data.Grade, data.CityOrigin, data.CityDestination, data.Customer, data.Traveler, data.Packages);
+            _travelsRepository.Add(travel);
+            _transactionManager.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+        
        
     }
 }
