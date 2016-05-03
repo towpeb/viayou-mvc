@@ -1,0 +1,30 @@
+﻿@model ViaYou.Web.Areas.Admin.Models.CityViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>@($"Edit City: {Model.Name}")</h4>
+    <hr />
+    @Html.EditorForModel()
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+}
+@section specific_scripts{
+    <script>
+        $(function () {
+            $('#CountryId')
+                .select2({
+                    placeholder: 'select a question...'
+                });
+        });
+    </script>
+}
