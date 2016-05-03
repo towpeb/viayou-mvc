@@ -113,6 +113,12 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public ActionResult Search(string query)
+        {
+            var travel = from _travel in _travelsRepository.GetAll() where _travel.Traveler.FirstName.Contains(query) select _travel;
+            return View(travel.ToList());
+        }
         
        
     }
