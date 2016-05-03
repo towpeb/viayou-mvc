@@ -116,7 +116,13 @@ namespace ViaYou.Web.Areas.Admin.Controllers
 
         public ActionResult Search(string query)
         {
-            var travel = from _travel in _travelsRepository.GetAll() where _travel.Traveler.FirstName.Contains(query) select _travel;
+            var travel = from _travel in _travelsRepository.GetAll().Take(10) where _travel.Traveler.FirstName.Contains(query) select _travel;
+            //travel=_travelsRepository
+            if (travel==null)
+            {
+                return HttpNotFound("there is no traveler with such a name");
+            }
+            
             return View(travel.ToList());
         }
         
