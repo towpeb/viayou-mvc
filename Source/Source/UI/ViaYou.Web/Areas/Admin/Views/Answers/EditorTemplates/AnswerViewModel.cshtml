@@ -1,0 +1,39 @@
+﻿@model ViaYou.Web.Areas.Admin.Models.AnswerViewModel
+
+<div class="row">
+    <div class="col-md-10 form-horizontal">
+        @if (Model == null)
+        {
+            <h4>Create Answer</h4>
+        }
+        else
+        {
+            <h4>@($"Edit Answer: {Model.Text}")</h4>
+        }
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Text, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Text, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="QuestionId" name="QuestionId" class="select2 form-control">
+                    <option value="" selected></option>
+                    @foreach (var answer in Model.AvailableQuestions)
+                    {
+                        <option value="@answer.Value" @(answer.Selected ? "selected" : "")>@answer.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.QuestionId, "", new { @class = "text-danger" })
+            </div>
+        </div>       
+    </div>
+</div>

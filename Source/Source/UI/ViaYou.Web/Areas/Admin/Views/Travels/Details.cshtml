@@ -1,0 +1,66 @@
+﻿@model ViaYou.Domain.Travels.Travel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Travel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CityDestination.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityDestination.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityOrigin.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityOrigin.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TravelerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TravelerId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
