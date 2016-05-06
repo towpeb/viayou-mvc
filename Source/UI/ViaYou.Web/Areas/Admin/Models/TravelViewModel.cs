@@ -20,26 +20,22 @@ namespace ViaYou.Web.Areas.Admin.Models
 
         public int? CustomerId { get; set; }
         [Required]
-        public ApplicationUser Customer { get; set; }
-
         public int? TravelerId { get; set; }
-        public ApplicationUser Traveler { get; set; }
+      
 
-        public int CityOriginId { get; set; }
-                
-        public City CityOrigin { get; set; }
+        public int? CityOriginId { get; set; }          
+     
 
-        public int CityDestinationId { get; set; }
-
-        public City CityDestination { get; set; }
-
-        public ICollection<Package> Packages { get; set; }
-                
-        public SelectList CityOriginList { get; set; }
-               
-        public SelectList CityDestinationList { get; set; }
+        public int? CityDestinationId { get; set; }
         
+        public IEnumerable<Package> Packages { get; set; }
+                
+        public IEnumerable<SelectListItem> CitiesListOrig { get; internal set; }
+        public IEnumerable<SelectListItem> CitiesListDest { get; internal set; }
 
-       
+
+
+
+
     }
 }

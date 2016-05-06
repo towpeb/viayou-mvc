@@ -12,6 +12,8 @@ using ViaYou.Data.Repositories;
 using ViaYou.Domain.Repositories;
 using ViaYou.Domain.Travels;
 using ViaYou.Web.Areas.Admin.Models;
+using ViaYou.Web.Helpers;
+
 
 namespace ViaYou.Web.Areas.Admin.Controllers
 {
@@ -66,15 +68,15 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             }
 
             var travel = _travelsRepository.GetById(id);
+            var cities = _cityRepository.GetAll().ToList();
 
             if (travel == null)
                return HttpNotFound("travel not found");
 
             var data = Mapper.Map<TravelViewModel>(travel);
-
-            data.CityDestinationList= new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityDestinationId);
-            data.CityOriginList= new SelectList(_cityRepository.GetAll(), "Id", "Name", travel.CityOriginId);
-            
+            data.CitiesListOrig = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString(), c => c.Id == travel.CityOriginId);
+            data.CitiesListDest = cities.CreateSelectListItems(d => d.Name, d => d.Id.ToString(), d => d.Id == travel.CityDestinationId);
+                        
             return View(data);
         }
 
@@ -88,7 +90,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             if (travel==null)
                return HttpNotFound("travel not found");
 
-            travel.Update(data.Date, data.Grade, data.Customer, data.Traveler, data.CityOrigin, data.CityDestination);
+            travel.Update(data.Date, data.Grade);
             _transactionManager.SaveChanges();
             return RedirectToAction("Index");
 
@@ -96,7 +98,13 @@ namespace ViaYou.Web.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var cities = _cityRepository.GetAll().ToList();
+            return View(new TravelViewModel
+            {
+                CitiesListOrig = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString(), c => false),
+                CitiesListDest = cities.CreateSelectListItems(x => x.Name, x => x.Id.ToString(), x => false)
+            }
+                );
         }
 
         [HttpPost]
@@ -107,8 +115,14 @@ namespace ViaYou.Web.Areas.Admin.Controllers
                 return View(data);
             }
 
-            var travel = new Travel(data.Date, data.Grade, data.CityOrigin, data.CityDestination, data.Customer, data.Traveler, data.Packages);
-            _travelsRepository.Add(travel);
+            _travelsRepository.Add(new Travel
+            {
+                Date = data.Date,
+                Grade = data.Grade,
+                CityOrigin = _cityRepository.GetById(data.CityOriginId.Value),
+                CityDestination = _cityRepository.GetById(data.CityDestinationId.Value)
+                
+            });
             _transactionManager.SaveChanges();
             return RedirectToAction("Index");
 
