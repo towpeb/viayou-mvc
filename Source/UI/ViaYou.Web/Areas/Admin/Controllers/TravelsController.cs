@@ -74,8 +74,8 @@ namespace ViaYou.Web.Areas.Admin.Controllers
                return HttpNotFound("travel not found");
 
             var data = Mapper.Map<TravelViewModel>(travel);
-            data.CitiesListOrig = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString(), c => c.Id == travel.CityOriginId);
-            data.CitiesListDest = cities.CreateSelectListItems(d => d.Name, d => d.Id.ToString(), d => d.Id == travel.CityDestinationId);
+            data.CitiesList = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString());
+           
                         
             return View(data);
         }
@@ -101,8 +101,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             var cities = _cityRepository.GetAll().ToList();
             return View(new TravelViewModel
             {
-                CitiesListOrig = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString(), c => false),
-                CitiesListDest = cities.CreateSelectListItems(x => x.Name, x => x.Id.ToString(), x => false)
+                CitiesList = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString(), c => false)
             }
                 );
         }

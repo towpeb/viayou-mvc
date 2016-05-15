@@ -30,8 +30,8 @@ namespace ViaYou.Web.Areas.Admin.Models
         
         public IEnumerable<Package> Packages { get; set; }
                 
-        public IEnumerable<SelectListItem> CitiesListOrig { get; internal set; }
-        public IEnumerable<SelectListItem> CitiesListDest { get; internal set; }
+        public IEnumerable<SelectListItem> CitiesList { get; internal set; }
+       
 
 
 

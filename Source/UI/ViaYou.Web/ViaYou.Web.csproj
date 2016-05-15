@@ -305,6 +305,7 @@
     <Content Include="Areas\Admin\Views\Travels\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Travels\EditorTemplate\TravelViewModel.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
