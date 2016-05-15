@@ -1,6 +1,7 @@
 ﻿@model ViaYou.Web.Areas.Admin.Models.TravelViewModel
 @{
     ViewBag.Title = "TravelViewModel";
+    Layout = null;
 }
 
 <h2>TravelViewModel</h2>
@@ -25,7 +26,36 @@
         </div>
     </div>
 
+     <div class="col-md-6">
+         <div class="form-group">
+             @Html.LabelFor(model => model.CityOriginId, "City Origin", new { @class = "control-label col-md-4" })
+             <div class="col-md-8">
+                 <select id="CityOriginId" name="CityOriginId" class="select2 form-control">
+                     @foreach (var city in Model.CitiesList)
+                     {
+                         <option value="@city.Value" @(city.Value==Model.CityOriginId.ToString() ? "selected" : "")>@city.Text</option>
+                     }
+                 </select>
+                 @Html.ValidationMessageFor(model => model.CityOriginId)
+             </div>
+         </div>
+     </div>
 
+     <div class="col-md-6">
+         <div class="form-group">
+             @Html.LabelFor(model => model.CityDestinationId, "City Destination", new { @class = "control-label col-md-4" })
+             <div class="col-md-8">
+                 <select id="CityDestinationId" name="CityDestinationId" class="select2 form-control">
+                     @foreach (var city in Model.CitiesList)
+                     {
+                         <option value="@city.Value" @(city.Value==Model.CityDestinationId.ToString() ? "selected" : "")>@city.Text</option>
+                     }
+                 </select>
+                 @Html.ValidationMessageFor(model => model.CityDestinationId)
+             </div>
+         </div>
+     </div>
+   
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-success" />
