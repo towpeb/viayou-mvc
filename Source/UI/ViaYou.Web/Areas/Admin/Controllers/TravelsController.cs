@@ -102,10 +102,10 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             var user = _applicationUser.GetAll().ToList();
             return View(new TravelViewModel
             {
+                Date = System.DateTime.Now,
                 CitiesList = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString(), c => false),
                 Users=user.CreateSelectListItems(u=>u.FirstName,u=>u.Id.ToString(),u=>false)
-            }
-                );
+            });
         }
 
         [HttpPost]
@@ -115,13 +115,15 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             {
                 return View(data);
             }
-
+                        
             _travelsRepository.Add(new Travel
             {
                 Date = data.Date,
-                Grade = data.Grade,
+                //Grade = data.Grade,
                 CityOrigin = _cityRepository.GetById(data.CityOriginId.Value),
-                CityDestination = _cityRepository.GetById(data.CityDestinationId.Value)
+                CityDestination = _cityRepository.GetById(data.CityDestinationId.Value),
+                Customer=_applicationUser.GetById(data.CustomerId.Value.ToString()),
+                Traveler=_applicationUser.GetById(data.TravelerId.Value.ToString())
                 
             });
             _transactionManager.SaveChanges();

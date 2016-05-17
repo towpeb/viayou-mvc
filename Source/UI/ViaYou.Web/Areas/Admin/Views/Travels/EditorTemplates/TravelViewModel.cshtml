@@ -31,7 +31,7 @@
                 <select id="CustomerId" name="CustomerId" class="select2 form-control">
                     @foreach (var customer in Model.Users)
                     {
-                        <option value="@customer.Value" @(customer.Value == Model.CustomerId.ToString() ? "selected" : "")>@customer.Text</option>
+                        <option value="@customer.Value" @(customer.Value==Model.CustomerId.ToString() && Model.CustomerId!=null ? "selected" : "")>@customer.Text</option>
                     }
                 </select>
                 @Html.ValidationMessageFor(model => model.CustomerId)
@@ -40,12 +40,12 @@
     </div>
      <div class="col-md-6">
          <div class="form-group">
-             @Html.LabelFor(model => model.TravelerId, "Travel", new { @class = "control-label col-md-4" })
+             @Html.LabelFor(model => model.TravelerId, "Traveler", new { @class = "control-label col-md-4" })
              <div class="col-md-8">
                  <select id="TravelerId" name="TravelerId" class="select2 form-control">
                      @foreach (var traveler in Model.Users)
                      {
-                         <option value="@traveler.Value" @(traveler.Value == Model.TravelerId.ToString() ? "selected" : "")>@traveler.Text</option>
+                         <option value="@traveler.Value" @(traveler.Value==Model.TravelerId.ToString() &&Model.TravelerId!=null ? "selected" : "")>@traveler.Text</option>
                      }
                  </select>
                  @Html.ValidationMessageFor(model => model.TravelerId)
@@ -60,7 +60,7 @@
                  <select id="CityOriginId" name="CityOriginId" class="select2 form-control">
                      @foreach (var city in Model.CitiesList)
                      {
-                         <option value="@city.Value" @(city.Value==Model.CityOriginId.ToString() ? "selected" : "")>@city.Text</option>
+                         <option value="@city.Value" @(city.Selected ? "selected" : "")>@city.Text</option>
                      }
                  </select>
                  @Html.ValidationMessageFor(model => model.CityOriginId)
@@ -75,7 +75,7 @@
                  <select id="CityDestinationId" name="CityDestinationId" class="select2 form-control">
                      @foreach (var city in Model.CitiesList)
                      {
-                         <option value="@city.Value" @(city.Value==Model.CityDestinationId.ToString() ? "selected" : "")>@city.Text</option>
+                         <option value="@city.Value" @(city.Selected ? "selected" : "")>@city.Text</option>
                      }
                  </select>
                  @Html.ValidationMessageFor(model => model.CityDestinationId)
