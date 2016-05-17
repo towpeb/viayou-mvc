@@ -26,11 +26,9 @@ namespace ViaYou.Domain.Travels
         public DateTime Date { get; set; }
         public decimal Grade { get; set; }
 
-        public int? CustomerId { get; set; }
         [Required]
         public ApplicationUser Customer { get; set; }
 
-        public int? TravelerId { get; set; }
         public ApplicationUser Traveler { get; set; }
 
         public int CityOriginId { get; set; }

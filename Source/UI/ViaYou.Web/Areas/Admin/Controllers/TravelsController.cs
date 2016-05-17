@@ -37,8 +37,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         public ActionResult Index()
         {
             //Return the travel list ordered by date
-            var _travel = from travel in _travelsRepository.GetAll() orderby travel.Date ascending select travel;
-            return View(_travel);
+            return View(_travelsRepository.GetAll().OrderByDescending(t=>t.Date).ToList());
         }
 
         //GET: Admin/Travels/Details/5
