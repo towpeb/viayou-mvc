@@ -4,9 +4,8 @@
     Layout = null;
 }
 
-<h2>TravelViewModel</h2>
 
-*<div class="form-horizontal">
+<div class="form-horizontal">
     <h4>New Travel</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -18,13 +17,41 @@
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Grade, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
         </div>
+    </div>*@
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerId, "Customer", new {@class = "control-label col-md-4"})
+            <div class="col-md-8">
+                <select id="CustomerId" name="CustomerId" class="select2 form-control">
+                    @foreach (var customer in Model.Users)
+                    {
+                        <option value="@customer.Value" @(customer.Value == Model.CustomerId.ToString() ? "selected" : "")>@customer.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.CustomerId)
+            </div>
+        </div>
     </div>
+     <div class="col-md-6">
+         <div class="form-group">
+             @Html.LabelFor(model => model.TravelerId, "Travel", new { @class = "control-label col-md-4" })
+             <div class="col-md-8">
+                 <select id="TravelerId" name="TravelerId" class="select2 form-control">
+                     @foreach (var traveler in Model.Users)
+                     {
+                         <option value="@traveler.Value" @(traveler.Value == Model.TravelerId.ToString() ? "selected" : "")>@traveler.Text</option>
+                     }
+                 </select>
+                 @Html.ValidationMessageFor(model => model.TravelerId)
+             </div>
+         </div>
+     </div>
 
      <div class="col-md-6">
          <div class="form-group">
@@ -55,10 +82,5 @@
              </div>
          </div>
      </div>
-   
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-success" />
-        </div>
-    </div>
+      
 </div>

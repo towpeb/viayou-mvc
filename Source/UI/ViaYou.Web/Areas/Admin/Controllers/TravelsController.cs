@@ -20,17 +20,17 @@ namespace ViaYou.Web.Areas.Admin.Controllers
     public class TravelsController : Controller
     {
         private ITravelRepository _travelsRepository;
-        private ICountryRepository _countryRepository;
         private ICityRepository _cityRepository;
         private ITransactionManager _transactionManager;
+        private IApplicationUserRepository _applicationUser;
 
-
-        public TravelsController(ITravelRepository travelRepository, ICountryRepository countryRepository, ICityRepository cityRepository,ITransactionManager transactionManager)
+        public TravelsController(ITravelRepository travelRepository, ICityRepository cityRepository,ITransactionManager transactionManager,IApplicationUserRepository applicationUser)
         {
             _travelsRepository = travelRepository;
-            _countryRepository = countryRepository;
             _cityRepository = cityRepository;
             _transactionManager = transactionManager;
+            _applicationUser = applicationUser;
+
         }
 
         // GET: Admin/Travels
@@ -69,14 +69,14 @@ namespace ViaYou.Web.Areas.Admin.Controllers
 
             var travel = _travelsRepository.GetById(id);
             var cities = _cityRepository.GetAll().ToList();
+            var user = _applicationUser.GetAll().ToList();
 
             if (travel == null)
                return HttpNotFound("travel not found");
 
             var data = Mapper.Map<TravelViewModel>(travel);
             data.CitiesList = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString());
-           
-                        
+            data.Users = user.CreateSelectListItems(u => u.FirstName+u.LastName, u => u.Id.ToString());
             return View(data);
         }
 
@@ -99,9 +99,11 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         public ActionResult Create()
         {
             var cities = _cityRepository.GetAll().ToList();
+            var user = _applicationUser.GetAll().ToList();
             return View(new TravelViewModel
             {
-                CitiesList = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString(), c => false)
+                CitiesList = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString(), c => false),
+                Users=user.CreateSelectListItems(u=>u.FirstName,u=>u.Id.ToString(),u=>false)
             }
                 );
         }

@@ -19,13 +19,15 @@ namespace ViaYou.Web.Areas.Admin.Models
         public decimal Grade { get; set; }
 
         public int? CustomerId { get; set; }
-        [Required]
+        
         public int? TravelerId { get; set; }
-      
 
+        public IEnumerable<SelectListItem> Users { get; set; }
+      
+        [Required]
         public int? CityOriginId { get; set; }          
      
-
+        [Required]
         public int? CityDestinationId { get; set; }
         
         public IEnumerable<Package> Packages { get; set; }

@@ -55,6 +55,30 @@ namespace ViaYou.Data.Migrations
             base.Seed(context);
 
             context.Cities.AddOrUpdate(new City { Name = "La Havana", Code = "10400" });
+
+            context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
+            {
+                FirstName = "Wilber",
+                LastName = "Ulloa",
+                Email = "wuj120398gmail.com",
+                UserName = "Wlloa"
+            });
+
+            //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
+            //{
+            //    FirstName = "Yassiel",
+            //    LastName = "Oliva",
+            //    Email = "yoliva@gmail.com",
+            //    UserName = "Batman"
+            //});
+
+            //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
+            //{
+            //    FirstName = "Roly",
+            //    LastName = "Cruz",
+            //    Email = "judi@gmail.com",
+            //    UserName = "Judi"
+            //});
         }
     }
 }
