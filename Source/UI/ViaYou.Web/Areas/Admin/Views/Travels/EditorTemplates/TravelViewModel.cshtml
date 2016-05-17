@@ -31,7 +31,7 @@
                 <select id="CustomerId" name="CustomerId" class="select2 form-control">
                     @foreach (var customer in Model.Users)
                     {
-                        <option value="@customer.Value" @(customer.Value == Model.CustomerId.ToString() && Model.CustomerId != null ? "selected" : "")>@customer.Text</option>
+                        <option value="@customer.Value" @(customer.Value == Model.CustomerId && Model.CustomerId != null ? "selected" : "")>@customer.Text</option>
                     }
                 </select>
                 @Html.ValidationMessageFor(model => model.CustomerId)
@@ -45,7 +45,7 @@
                  <select id="TravelerId" name="TravelerId" class="select2 form-control">
                      @foreach (var traveler in Model.Users)
                      {
-                         <option value="@traveler.Value" @(traveler.Value==Model.TravelerId.ToString() &&Model.TravelerId!=null ? "selected" : "")>@traveler.Text</option>
+                         <option value="@traveler.Value" @(traveler.Value==Model.TravelerId &&Model.TravelerId!=null ? "selected" : "")>@traveler.Text</option>
                      }
                  </select>
                  @Html.ValidationMessageFor(model => model.TravelerId)

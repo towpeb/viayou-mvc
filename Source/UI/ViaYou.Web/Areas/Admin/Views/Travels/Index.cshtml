@@ -33,25 +33,25 @@
 
             @Html.Grid(Model).Columns(columns =>
        {
-       columns.Add(c => c.CityOrigin)
+       columns.Add(c => c.CityOrigin.Name)
               .Titled("Origin City")
               .Css("text-center")
               .Sortable(true);
 
-       columns.Add(c => c.CityDestination)
+       columns.Add(c => c.CityDestination.Name)
               .Titled("Destination City")
               .Css("text-center")
               .Sortable(true);
 
-       columns.Add(c => c.Traveler.EmailConfirmed)
-              .Titled("Traveler Contact")
-              .Css("text-center")
-              .Sortable(true);
+       //columns.Add(c => c.Traveler.FirstName)
+       //       .Titled("Traveler Contact")
+       //       .Css("text-center")
+       //       .Sortable(true);
 
        columns.Add(c => c.Date)
-              .Titled("Date")
-              .Css("text-center")
-              .Sortable(true);
+  .Titled("Date")
+  .Css("text-center")
+  .Sortable(true);
 
        columns.Add()
               .Encoded(false)

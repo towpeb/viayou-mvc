@@ -52,7 +52,7 @@ namespace ViaYou.Data.Migrations
                     Cities = new List<City>(),
                 });
             context.Countries.AddOrUpdate(new Country { Name = "España", Code = "10000", Cities = new List<City>() });
-            base.Seed(context);
+           
 
             context.Cities.AddOrUpdate(new City { Name = "La Havana", Code = "10400" });
 
@@ -61,7 +61,8 @@ namespace ViaYou.Data.Migrations
                 FirstName = "Wilber",
                 LastName = "Ulloa",
                 Email = "wuj120398gmail.com",
-                UserName = "Wlloa"
+                UserName = "Wlloa",
+                EmailConfirmed = true
             });
 
             //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
@@ -71,7 +72,6 @@ namespace ViaYou.Data.Migrations
             //    Email = "yoliva@gmail.com",
             //    UserName = "Batman"
             //});
-
             //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
             //{
             //    FirstName = "Roly",
@@ -79,6 +79,8 @@ namespace ViaYou.Data.Migrations
             //    Email = "judi@gmail.com",
             //    UserName = "Judi"
             //});
+
+            base.Seed(context);
         }
     }
 }

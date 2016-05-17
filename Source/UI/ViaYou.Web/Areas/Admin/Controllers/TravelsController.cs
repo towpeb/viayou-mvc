@@ -115,17 +115,16 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             {
                 return View(data);
             }
-                        
-            _travelsRepository.Add(new Travel
-            {
+
+            var travel = new Travel {
                 Date = data.Date,
                 //Grade = data.Grade,
                 CityOrigin = _cityRepository.GetById(data.CityOriginId.Value),
                 CityDestination = _cityRepository.GetById(data.CityDestinationId.Value),
-                Customer=_applicationUser.GetById(data.CustomerId.Value.ToString()),
-                Traveler=_applicationUser.GetById(data.TravelerId.Value.ToString())
-                
-            });
+                Customer = _applicationUser.GetById(data.CustomerId),
+                Traveler = _applicationUser.GetById(data.TravelerId)
+            };           
+            _travelsRepository.Add(travel);
             _transactionManager.SaveChanges();
             return RedirectToAction("Index");
 

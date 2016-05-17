@@ -18,9 +18,9 @@ namespace ViaYou.Web.Areas.Admin.Models
         public DateTime Date { get; set; }
         public decimal Grade { get; set; }
 
-        public int? CustomerId { get; set; }
+        public string CustomerId { get; set; }
         
-        public int? TravelerId { get; set; }
+        public string TravelerId { get; set; }
 
         public IEnumerable<SelectListItem> Users { get; set; }
       
