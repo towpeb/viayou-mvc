@@ -20,7 +20,9 @@ namespace ViaYou.Data.Repositories
         {
             return Context.Travels
                         .Include(t=>t.CityDestination)
-                        .Include(t=>t.CityOrigin);
+                        .Include(t=>t.CityOrigin)
+                        .Include((t=>t.Customer))
+                        .Include(t=>t.Traveler);
         }
 
         public Travel GetById(int? id)

@@ -43,15 +43,15 @@
               .Css("text-center")
               .Sortable(true);
 
-       //columns.Add(c => c.Traveler.FirstName)
-       //       .Titled("Traveler Contact")
-       //       .Css("text-center")
-       //       .Sortable(true);
+       columns.Add(c => c.Traveler.Email)
+              .Titled("Traveler Contact")
+              .Css("text-center")
+              .Sortable(true);
 
        columns.Add(c => c.Date)
-  .Titled("Date")
-  .Css("text-center")
-  .Sortable(true);
+.Titled("Date")
+.Css("text-center")
+.Sortable(true);
 
        columns.Add()
               .Encoded(false)
