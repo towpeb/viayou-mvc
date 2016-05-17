@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ViaYou.Domain.Repositories;
 using ViaYou.Domain.Travels;
+using System.Data.Entity;
 
 namespace ViaYou.Data.Repositories
 {
@@ -17,7 +18,9 @@ namespace ViaYou.Data.Repositories
 
         public IQueryable<Travel> GetAll()
         {
-            return Context.Travels;
+            return Context.Travels
+                        .Include(t=>t.CityDestination)
+                        .Include(t=>t.CityOrigin);
         }
 
         public Travel GetById(int? id)
