@@ -46,7 +46,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var answer = _answerRepository.GetById(id);
-            var questions = _questionRepository.GetAll().Project().To<QuestionViewModel>();
+            var questions = _questionRepository.GetAll().Project().To<QuestionViewModel>().ToList();
 
             if (answer == null)
                 return HttpNotFound("Answer not found.");

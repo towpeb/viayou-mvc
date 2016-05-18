@@ -7,5 +7,6 @@ namespace ViaYou.Domain.Repositories
         City GetById(int id);
         void Add(City city);
         IQueryable<City> GetAll();
+        void Delete(int id);
     }
 }

@@ -8,9 +8,8 @@ namespace ViaYou.Domain
         {
             
         }
-        public City(int id, string name, string code, Country country)
+        public City(string name, string code, Country country)
         {
-            Id = id;
             Name = name;
             Code = code;
             Country = country;
@@ -20,6 +19,14 @@ namespace ViaYou.Domain
         public string Name { get; set; }
         [Required]
         public string Code { get; set; }
+        [Required]
         public Country Country { get; set; }
+
+        public void Update(string name, string code, Country country)
+        {
+            Name = name;
+            Code = code;
+            Country = country;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model ViaYou.Web.Areas.Admin.Models.CategoryViewModel
+﻿@model ViaYou.Web.Areas.Admin.Models.CountryViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -21,8 +21,18 @@
         </dd>
 
     </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
 
-    @using (Html.BeginForm("ConfirmDelete", "Categories", FormMethod.Post))
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("ConfirmDelete", "Countries", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
