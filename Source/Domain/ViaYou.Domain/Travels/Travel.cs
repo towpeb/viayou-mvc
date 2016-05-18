@@ -31,7 +31,7 @@ namespace ViaYou.Domain.Travels
 
         public ApplicationUser Traveler { get; set; }
 
-        public int CityOriginId { get; set; }
+        public int? CityOriginId { get; set; }
         [Required]
         public City CityOrigin { get; set; }
 
@@ -40,14 +40,16 @@ namespace ViaYou.Domain.Travels
 
         public ICollection<Package> Packages { get; set; }
 
-        public void Update(DateTime time, decimal grade/*, ApplicationUser customer, ApplicationUser traveler, City cityOrigin, City cityDestinatation*/)
+        public void Update(DateTime time, decimal grade, City cityOrigin, City cityDestinatation ,ApplicationUser customer, ApplicationUser traveler )
         {
             this.Date = time;
             this.Grade = grade;
-            //this.Customer = customer;
-            //this.Traveler = traveler;
-            //this.CityOrigin = cityOrigin;
-            //this.CityDestination = cityDestinatation;
+            this.Customer = customer;
+            this.Traveler = traveler;
+            this.CityOrigin = cityOrigin;
+            this.CityDestination = cityDestinatation;
+            this.CityOriginId = cityOrigin.Id;
+            this.CityDestinationId = CityDestination.Id;
         }
     }
 }

@@ -75,7 +75,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
 
             var data = Mapper.Map<TravelViewModel>(travel);
             data.CitiesList = cities.CreateSelectListItems(c => c.Name, c => c.Id.ToString());
-            data.Users = user.CreateSelectListItems(u => u.FirstName+u.LastName, u => u.Id.ToString());
+            data.Users = user.CreateSelectListItems(u => u.FirstName, u => u.Id.ToString());
             return View(data);
         }
 
@@ -89,7 +89,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             if (travel==null)
                return HttpNotFound("travel not found");
 
-            travel.Update(data.Date, data.Grade);
+            travel.Update(data.Date, data.Grade,_cityRepository.GetById(data.CityOriginId),_cityRepository.GetById(data.CityDestinationId),_applicationUser.GetById(data.CustomerId),_applicationUser.GetById(data.TravelerId));
             _transactionManager.SaveChanges();
             return RedirectToAction("Index");
 
