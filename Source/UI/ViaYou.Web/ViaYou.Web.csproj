@@ -200,6 +200,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdvicesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AnswersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApplicationUsersController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\CitiesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContainersController.cs" />
@@ -336,6 +337,11 @@
     <Content Include="Areas\Admin\Views\Cities\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Cities\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Cities\EditorTemplates\CityViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\ApplicationUsers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ApplicationUsers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ApplicationUsers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ApplicationUsers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ApplicationUsers\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />

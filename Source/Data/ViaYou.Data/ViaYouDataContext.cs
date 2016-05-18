@@ -33,5 +33,7 @@ namespace ViaYou.Data
         public System.Data.Entity.DbSet<ViaYou.Domain.City> Cities { get; set; }
 
         public DbSet<ViaYou.Domain.Country> Countries{ get; set; }
+
+        public System.Data.Entity.DbSet<ViaYou.Domain.Users.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
