@@ -33,6 +33,7 @@ namespace ViaYou.Web
             container.RegisterType<ITravelRepository, TravelRepository>();
             container.RegisterType<ICountryRepository, CountryRepository>();
             container.RegisterType<ICityRepository, CityRepository>();
+            container.RegisterType<IApplicationUserRepository, ApplicationUserRepository>();
 
             //service
             container.RegisterType<ITransactionManager, TransactionManager>();

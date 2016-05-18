@@ -25,7 +25,7 @@ namespace ViaYou.Data.Repositories
             Context.Cities.Remove(city);
         }
 
-        public City GetById(int id)
+        public City GetById(int? id)
         {
             return Context.Cities.Find(id);
         }
