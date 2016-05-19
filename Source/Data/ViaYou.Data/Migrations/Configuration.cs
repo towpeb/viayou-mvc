@@ -31,6 +31,31 @@ namespace ViaYou.Data.Migrations
 
             CitySeed.Seed(context);
             context.SaveChanges();
+            context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
+            {
+                FirstName = "Wilber",
+                LastName = "Ulloa",
+                Email = "wuj120398gmail.com",
+                UserName = "Wlloa",
+                EmailConfirmed = true
+            });
+
+            //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
+            //{
+            //    FirstName = "Yassiel",
+            //    LastName = "Oliva",
+            //    Email = "yoliva@gmail.com",
+            //    UserName = "Batman"
+            //});
+            //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
+            //{
+            //    FirstName = "Roly",
+            //    LastName = "Cruz",
+            //    Email = "judi@gmail.com",
+            //    UserName = "Judi"
+            //});
+
+            base.Seed(context);
         }
     }
 }
