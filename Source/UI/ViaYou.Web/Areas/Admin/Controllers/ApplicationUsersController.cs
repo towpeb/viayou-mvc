@@ -7,123 +7,129 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ViaYou.Data;
+using ViaYou.Domain.Repositories;
 using ViaYou.Domain.Users;
 
 namespace ViaYou.Web.Areas.Admin.Controllers
 {
     public class ApplicationUsersController : Controller
     {
-        private ViaYouDataContext db = new ViaYouDataContext();
-       
+        //private ViaYouDataContext db = new ViaYouDataContext();
+        private IApplicationUserRepository _usserRepository;
+
+        public ApplicationUsersController(IApplicationUserRepository usserRepository)
+        {
+            _usserRepository = usserRepository;
+        }
 
         // GET: Admin/ApplicationUsers
         public ActionResult Index()
         {
-            return View(db.ApplicationUsers.ToList());
+            return View(_usserRepository.GetAll().OrderByDescending(u=>u.FirstName).ToList());
         }
 
         // GET: Admin/ApplicationUsers/Details/5
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
+        //public ActionResult Details(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
+        //    if (applicationUser == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(applicationUser);
+        //}
 
-        // GET: Admin/ApplicationUsers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Admin/ApplicationUsers/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: Admin/ApplicationUsers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.ApplicationUsers.Add(applicationUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Admin/ApplicationUsers/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.ApplicationUsers.Add(applicationUser);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(applicationUser);
-        }
+        //    return View(applicationUser);
+        //}
 
-        // GET: Admin/ApplicationUsers/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
+        //// GET: Admin/ApplicationUsers/Edit/5
+        //public ActionResult Edit(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
+        //    if (applicationUser == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(applicationUser);
+        //}
 
-        // POST: Admin/ApplicationUsers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(applicationUser);
-        }
+        //// POST: Admin/ApplicationUsers/Edit/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(applicationUser).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(applicationUser);
+        //}
 
-        // GET: Admin/ApplicationUsers/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
+        //// GET: Admin/ApplicationUsers/Delete/5
+        //public ActionResult Delete(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
+        //    if (applicationUser == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(applicationUser);
+        //}
 
-        // POST: Admin/ApplicationUsers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            db.ApplicationUsers.Remove(applicationUser);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: Admin/ApplicationUsers/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(string id)
+        //{
+        //    ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
+        //    db.ApplicationUsers.Remove(applicationUser);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

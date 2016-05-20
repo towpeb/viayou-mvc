@@ -1,111 +1,70 @@
-﻿@model IEnumerable<ViaYou.Domain.Users.ApplicationUser>
+﻿@using GridMvc.Html
+@model IEnumerable<ViaYou.Domain.Users.ApplicationUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Travels";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row" style="margin: 15px">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Users
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="row" style="margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 5px">
+                <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Create</a>
+                <div class="input-group custom-search-form col-lg-3 pull-right">
+                    <input type="text" class="form-control" placeholder="Search..." id="searchBox">
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" type="button" href="#">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MiddleName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MiddleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PasswordHash)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SecurityStamp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LockoutEnabled)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AccessFailedCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
 
-</table>
+            @Html.Grid(Model).Columns(columns =>
+       {
+       columns.Add(c => c.FirstName)
+              .Titled("Name")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.LastName)
+              .Titled("Last Name")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.Email)
+              .Titled("Email Contact")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.PhoneNumber)
+              .Titled("Phone Contact")
+              .Css("text-center")
+              .Sortable(true);
+             
+
+       columns.Add()
+              .Encoded(false)
+              .Sanitized(false)
+              .Css("text-center")
+              .RenderValueAs(c =>
+            @<div>
+                <a href="@Url.Action("Edit", new { c.Id })">
+                    <i class="fa fa-pencil edit-button"></i>
+                </a>
+
+            </div>
+               );
+
+       }
+).WithPaging(5);
+        </div>
+    </div>
+</div>
