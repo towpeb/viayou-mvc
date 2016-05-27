@@ -40,20 +40,20 @@ namespace ViaYou.Data.Migrations
                 EmailConfirmed = true
             });
 
-            //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
-            //{
-            //    FirstName = "Yassiel",
-            //    LastName = "Oliva",
-            //    Email = "yoliva@gmail.com",
-            //    UserName = "Batman"
-            //});
-            //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
-            //{
-            //    FirstName = "Roly",
-            //    LastName = "Cruz",
-            //    Email = "judi@gmail.com",
-            //    UserName = "Judi"
-            //});
+            context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
+            {
+                FirstName = "Yassiel",
+                LastName = "Oliva",
+                Email = "yoliva@gmail.com",
+                UserName = "Batman"
+            });
+            context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
+            {
+                FirstName = "Roly",
+                LastName = "Cruz",
+                Email = "judi@gmail.com",
+                UserName = "Judi"
+            });
 
             base.Seed(context);
         }

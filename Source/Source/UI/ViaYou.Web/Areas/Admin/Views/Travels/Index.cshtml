@@ -1,0 +1,73 @@
+﻿@using GridMvc.Html
+@model IEnumerable<ViaYou.Domain.Travels.Travel>
+
+@{
+    ViewBag.Title = "Travels";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="margin: 15px">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Travels
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="row" style="margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 5px">
+                <div class="input-group custom-search-form col-lg-3 pull-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+
+
+
+            @Html.Grid(Model).Columns(columns =>
+       {
+       columns.Add(c => c.CityOrigin)
+              .Titled("Origin City")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.CityDestination)
+              .Titled("Destination City")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.Traveler.EmailConfirmed)
+              .Titled("Traveler Contact")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.Date)
+              .Titled("Date")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add()
+              .Encoded(false)
+              .Sanitized(false)
+              .Css("text-center")
+              .RenderValueAs(c =>
+           @<div>
+                <a href="@Url.Action("Edit", new { c.Id })">
+                    <i class="fa fa-pencil edit-button"></i>
+                </a>
+                <a href="@Url.Action("Details", new { c.Id })">
+                    <i class="fa fa-adjust btn-default" ></i>
+                </a>
+
+            </div>
+               );
+
+}
+).WithPaging(5);
+            </div>
+        </div>
+    </div>
+
+

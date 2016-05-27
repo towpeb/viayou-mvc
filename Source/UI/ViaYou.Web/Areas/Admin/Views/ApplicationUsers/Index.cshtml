@@ -1,0 +1,70 @@
+﻿@using GridMvc.Html
+@model IEnumerable<ViaYou.Domain.Users.ApplicationUser>
+
+@{
+    ViewBag.Title = "Travels";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="margin: 15px">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Users
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="row" style="margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 5px">
+                <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Create</a>
+                <div class="input-group custom-search-form col-lg-3 pull-right">
+                    <input type="text" class="form-control" placeholder="Search..." id="searchBox">
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" type="button" href="#">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+
+
+
+            @Html.Grid(Model).Columns(columns =>
+       {
+       columns.Add(c => c.FirstName)
+              .Titled("Name")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.LastName)
+              .Titled("Last Name")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.Email)
+              .Titled("Email Contact")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.PhoneNumber)
+              .Titled("Phone Contact")
+              .Css("text-center")
+              .Sortable(true);
+             
+
+       columns.Add()
+              .Encoded(false)
+              .Sanitized(false)
+              .Css("text-center")
+              .RenderValueAs(c =>
+            @<div>
+                <a href="@Url.Action("Edit", new { c.Id })">
+                    <i class="fa fa-pencil edit-button"></i>
+                </a>
+
+            </div>
+               );
+
+       }
+).WithPaging(5);
+        </div>
+    </div>
+</div>

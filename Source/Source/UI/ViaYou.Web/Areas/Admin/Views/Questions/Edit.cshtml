@@ -1,0 +1,28 @@
+﻿@model ViaYou.Web.Areas.Admin.Models.QuestionViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorForModel()
+
+    <div class="form-group">
+        <div class="col-md-offset-2">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+}
+@section specific_scripts{
+    <script>
+        $(function() {
+            $('#SelectedAnswersIds').select2({
+                placeholder: 'select answers for this question...',
+            });
+        });
+    </script>
+}

@@ -1,7 +1,3 @@
-using System.Data.SqlClient;
-using System.Diagnostics;
-using ViaYou.Data.Migrations.Seeds;
-using ViaYou.Data.Properties;
 using ViaYou.Domain.Enums;
 using ViaYou.Domain.Travels;
 
@@ -20,16 +16,13 @@ namespace ViaYou.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "ViaYou.Data.ViaYouDataContext";
         }
 
         protected override void Seed(ViaYouDataContext context)
         {
-            CountrySeed.Seed(context);
-            context.SaveChanges();
+            //  This method will be called after migrating to the latest version.
 
-<<<<<<< HEAD
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
@@ -59,39 +52,9 @@ namespace ViaYou.Data.Migrations
                     Cities = new List<City>(),
                 });
             context.Countries.AddOrUpdate(new Country { Name = "España", Code = "10000", Cities = new List<City>() });
-           
+            base.Seed(context);
 
             context.Cities.AddOrUpdate(new City { Name = "La Havana", Code = "10400" });
-
-            context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
-            {
-                FirstName = "Wilber",
-                LastName = "Ulloa",
-                Email = "wuj120398gmail.com",
-                UserName = "Wlloa",
-                EmailConfirmed = true
-            });
-
-            //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
-            //{
-            //    FirstName = "Yassiel",
-            //    LastName = "Oliva",
-            //    Email = "yoliva@gmail.com",
-            //    UserName = "Batman"
-            //});
-            //context.Users.AddOrUpdate(new Domain.Users.ApplicationUser
-            //{
-            //    FirstName = "Roly",
-            //    LastName = "Cruz",
-            //    Email = "judi@gmail.com",
-            //    UserName = "Judi"
-            //});
-
-            base.Seed(context);
-=======
-            CitySeed.Seed(context);
-            context.SaveChanges();
->>>>>>> develop
         }
     }
 }
