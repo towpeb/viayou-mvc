@@ -61,12 +61,20 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ApplicationUsers.Add(applicationUser);
-                db.SaveChanges();
+                ApplicationUser user = new ApplicationUser();
+                user.FirstName = data.FirstName;
+                user.Email = data.Email;
+                user.EmailConfirmed = data.EmailConfirmed;
+                user.LastName = data.LastName;
+                user.MiddleName = data.MiddleName;
+                user.UserName = data.UserName;
+                user.PhoneNumber = data.PhoneNumber;
+                _usserRepository.Add(user);
+                _transactionManager.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(applicationUser);
+            return View(data);
         }
 
         //// GET: Admin/ApplicationUsers/Edit/5

@@ -210,6 +210,7 @@
     <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Admin\Models\AdviceViewModel.cs" />
     <Compile Include="Areas\Admin\Models\AnswerViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ApplicationUserViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CityViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ContainerViewModel.cs" />
@@ -345,6 +346,7 @@
     <Content Include="Areas\Admin\Views\ApplicationUsers\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ApplicationUsers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ApplicationUsers\EditorTemplates\ApplicationUserViewModel.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
