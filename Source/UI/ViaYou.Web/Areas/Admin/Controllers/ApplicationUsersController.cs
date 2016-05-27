@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ViaYou.Data;
 using ViaYou.Domain.Repositories;
 using ViaYou.Domain.Users;
+using ViaYou.Web.Areas.Admin.Models;
 
 namespace ViaYou.Web.Areas.Admin.Controllers
 {
@@ -16,10 +17,12 @@ namespace ViaYou.Web.Areas.Admin.Controllers
     {
         //private ViaYouDataContext db = new ViaYouDataContext();
         private IApplicationUserRepository _usserRepository;
+        private ITransactionManager _transactionManager;
 
-        public ApplicationUsersController(IApplicationUserRepository usserRepository)
+        public ApplicationUsersController(IApplicationUserRepository usserRepository,ITransactionManager transactionManager)
         {
             _usserRepository = usserRepository;
+            _transactionManager = transactionManager;
         }
 
         // GET: Admin/ApplicationUsers
@@ -43,28 +46,28 @@ namespace ViaYou.Web.Areas.Admin.Controllers
         //    return View(applicationUser);
         //}
 
-        //// GET: Admin/ApplicationUsers/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        // GET: Admin/ApplicationUsers/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         //// POST: Admin/ApplicationUsers/Create
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.ApplicationUsers.Add(applicationUser);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ApplicationUserViewModel data)
+        {
+            if (ModelState.IsValid)
+            {
+                db.ApplicationUsers.Add(applicationUser);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-        //    return View(applicationUser);
-        //}
+            return View(applicationUser);
+        }
 
         //// GET: Admin/ApplicationUsers/Edit/5
         //public ActionResult Edit(string id)
