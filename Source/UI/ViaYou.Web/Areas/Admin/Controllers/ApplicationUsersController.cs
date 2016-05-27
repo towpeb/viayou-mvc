@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -64,7 +65,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
                 ApplicationUser user = new ApplicationUser();
                 user.FirstName = data.FirstName;
                 user.Email = data.Email;
-                user.EmailConfirmed = data.EmailConfirmed;
+               // user.EmailConfirmed = data.EmailConfirmed;
                 user.LastName = data.LastName;
                 user.MiddleName = data.MiddleName;
                 user.UserName = data.UserName;
@@ -77,36 +78,39 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             return View(data);
         }
 
-        //// GET: Admin/ApplicationUsers/Edit/5
-        //public ActionResult Edit(string id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-        //    if (applicationUser == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(applicationUser);
-        //}
+        // GET: Admin/ApplicationUsers/Edit/5
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var applicationUser = _usserRepository.GetById(id); 
+            if (applicationUser == null)
+            {
+                return HttpNotFound();
+            }
+            var data = Mapper.Map<ApplicationUserViewModel> (applicationUser);
+            return View(data);
+        }
 
         //// POST: Admin/ApplicationUsers/Edit/5
         //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,MiddleName,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(applicationUser).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(applicationUser);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ApplicationUserViewModel data)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _usserRepository.GetById(data.Id);
+
+                user.Update(data.FirstName, data.LastName, data.MiddleName, data.UserName, data.PhoneNumber, data.Email);
+                _transactionManager.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(data);
+        }
 
         //// GET: Admin/ApplicationUsers/Delete/5
         //public ActionResult Delete(string id)
