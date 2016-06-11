@@ -1,0 +1,63 @@
+﻿@using GridMvc.Html
+@model IEnumerable<ViaYou.Domain.City>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="margin: 15px">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Cities
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="row" style="margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 5px">
+                <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fa fa-plus-square"></i> Create</a>
+                <div class="input-group custom-search-form col-lg-3 pull-right">
+                    <input type="text" class="form-control" placeholder="Search..." id="searchBox">
+                    <span class="input-group-btn">
+                        <a class="btn btn-default" type="button" href="#">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </span>
+                </div>
+            </div>
+
+            @Html.Grid(Model).Columns(columns =>
+            {
+                columns.Add(c => c.Name)
+                    .Titled("Name")
+                    .Css("text-center")
+                    .Sortable(true);
+                columns.Add(c => c.Code)
+                    .Titled("Code")
+                    .Css("text-center")
+                    .Sortable(true);
+                columns.Add(c => c.Country.Name)
+                    .Titled("Country")
+                    .Css("text-center")
+                    .Sortable(true);
+                columns.Add()
+                    .Encoded(false)
+                    .Sanitized(false)
+                    .Css("text-center")
+                    .RenderValueAs(c =>
+                        @<div>
+                            <a href="@Url.Action("Edit", new {c.Id})">
+                                <i class="fa fa-pencil edit-button"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", new {c.Id})">
+                                <i class="fa fa-trash delete-button"></i>
+                            </a>
+                        </div>);
+            }).WithPaging(10)
+        </div>
+    </div>
+</div>
+@section specific_scripts
+{
+    <script type="text/javascript">
+
+    </script>
+}

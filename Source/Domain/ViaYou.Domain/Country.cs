@@ -10,9 +10,8 @@ namespace ViaYou.Domain
             
         }
 
-        public Country(int id, string name, string code, ICollection<City> cities)
+        public Country(string name, string code, ICollection<City> cities = null)
         {
-            Id = id;
             Name = name;
             Code = code;
             Cities = cities;
@@ -25,5 +24,11 @@ namespace ViaYou.Domain
         public string Code { get; set; }
 
         public ICollection<City> Cities { get; set; }
+
+        public void Update(string name, string code)
+        {
+            Name = name;
+            Code = code;
+        }
     }
 }
