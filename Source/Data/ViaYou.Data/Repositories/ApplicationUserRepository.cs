@@ -15,18 +15,6 @@ namespace ViaYou.Data.Repositories
             Context.Users.Add(user);
         }
 
-        public bool Add(ApplicationUser user, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(string id)
-        {
-            var container = new ApplicationUser() { Id = id };
-            Context.Users.Attach(container);
-            Context.Users.Remove(container);
-        }
-
         public IQueryable<ApplicationUser> GetAll()
         {
             return Context.Users;
@@ -34,7 +22,13 @@ namespace ViaYou.Data.Repositories
 
         public ApplicationUser GetById(string id)
         {
-            return Context.Users.FirstOrDefault();
+            return Context.Users.Find(id);
         }
+
+        public bool Add(ApplicationUser user, string password)
+        {
+            return true;
+        }
+
     }
 }

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Data.Entity;
 using ViaYou.Domain;
 using ViaYou.Domain.Repositories;
 
 namespace ViaYou.Data.Repositories
 {
-   public class CityRepository : BaseRepository, ICityRepository
+    public class CityRepository : BaseRepository, ICityRepository
     {
         public void Add(City city)
         {
@@ -17,10 +14,18 @@ namespace ViaYou.Data.Repositories
 
         public IQueryable<City> GetAll()
         {
-           return Context.Cities;
+            return Context.Cities
+                        .Include(c => c.Country);
         }
 
-        public City GetById(int id)
+        public void Delete(int id)
+        {
+            var city = new City() { Id = id };
+            Context.Cities.Attach(city);
+            Context.Cities.Remove(city);
+        }
+
+        public City GetById(int? id)
         {
             return Context.Cities.Find(id);
         }

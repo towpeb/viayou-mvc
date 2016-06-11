@@ -14,13 +14,14 @@
         <!-- /.panel-heading -->
         <div class="panel-body">
             <div class="row" style="margin-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 5px">
+                <a href="@Url.Action("Create")" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Create</a>
                 <div class="input-group custom-search-form col-lg-3 pull-right">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <a class="btn btn-default" type="button">
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </span>
+                    <input type="text" class="form-control" placeholder="Search..." id="searchBox">
+                        <span class="input-group-btn">
+                            <a class="btn btn-default" type="button" href="#">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </span>
                 </div>
             </div>
 
@@ -28,25 +29,30 @@
 
             @Html.Grid(Model).Columns(columns =>
        {
-       columns.Add(c => c.CityOrigin)
+       columns.Add(c => c.CityOrigin.Name)
               .Titled("Origin City")
               .Css("text-center")
               .Sortable(true);
 
-       columns.Add(c => c.CityDestination)
+       columns.Add(c => c.CityDestination.Name)
               .Titled("Destination City")
               .Css("text-center")
               .Sortable(true);
 
-       columns.Add(c => c.Traveler.EmailConfirmed)
+       columns.Add(c => c.Traveler.Email)
+              .Titled("Traveler Contact")
+              .Css("text-center")
+              .Sortable(true);
+
+       columns.Add(c => c.Customer.Email)
               .Titled("Traveler Contact")
               .Css("text-center")
               .Sortable(true);
 
        columns.Add(c => c.Date)
-              .Titled("Date")
-              .Css("text-center")
-              .Sortable(true);
+.Titled("Date")
+.Css("text-center")
+.Sortable(true);
 
        columns.Add()
               .Encoded(false)
@@ -57,10 +63,7 @@
                 <a href="@Url.Action("Edit", new { c.Id })">
                     <i class="fa fa-pencil edit-button"></i>
                 </a>
-                <a href="@Url.Action("Details", new { c.Id })">
-                    <i class="fa fa-adjust btn-default" ></i>
-                </a>
-
+                
             </div>
                );
 

@@ -23,5 +23,16 @@ namespace ViaYou.Domain.Users
         public string MiddleName { get; set; }
 
         public ICollection<Travel> Travels { get; set; }
+
+        public void Update(string _firstName,string _lastName,string _middleName,string _userName,string _phoneNumber,string _email)
+        {
+           this.FirstName = _firstName;
+           this.LastName = _lastName;
+           this.MiddleName = _middleName;
+           this.UserName = _userName;
+           this.PhoneNumber = _phoneNumber;
+           this.Email = _email;
+        }
+
     }
 }
