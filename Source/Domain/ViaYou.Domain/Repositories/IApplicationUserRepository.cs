@@ -9,6 +9,5 @@ namespace ViaYou.Domain.Repositories
         void Add(ApplicationUser user);
         IQueryable<ApplicationUser> GetAll();
         bool Add(ApplicationUser user, string password);
-        void Delete(string id);
     }
 }

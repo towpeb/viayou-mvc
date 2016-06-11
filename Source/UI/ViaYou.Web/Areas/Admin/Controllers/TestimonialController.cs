@@ -89,7 +89,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             var users = _userRepository.GetAll().ToList();
             return View(new TestimonialViewModel
             {
-                AvailableUsers = users.CreateSelectListItems(x => x.MiddleName, x => x.MiddleName, x => false)
+                AvailableUsers = users.CreateSelectListItems(x => x.UserName, x => x.UserName, x => false)
             });
         }
 
