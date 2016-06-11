@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ViaYou.Domain.Repositories;
 using ViaYou.Domain.Travels;
@@ -21,7 +18,6 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             _transactionManager = transactionManager;
         }
 
-        [HttpGet]
         public ActionResult Delete(int id)
         {
             var container = _categoryRepository.GetById(id);
@@ -40,7 +36,6 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
         public ActionResult Edit(int id)
         {
             var category = _categoryRepository.GetById(id);
@@ -91,7 +86,7 @@ namespace ViaYou.Web.Areas.Admin.Controllers
             var results = categories.Where(c => c.Name.Contains(searchTerm)).Select(c => new { id = c.Id, text = c.Name }).ToList();
             return new JsonResult
             {
-                Data = new { Total = results.Count(), Results = results },
+                Data = new { Total = results.Count, Results = results },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
