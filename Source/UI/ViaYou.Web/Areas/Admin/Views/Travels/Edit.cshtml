@@ -1,82 +1,58 @@
-﻿@model ViaYou.Domain.Travels.Travel
+﻿@model ViaYou.Web.Areas.Admin.Models.TravelViewModel
+
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
-<h2>Edit</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Travel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+    <h4>
+        Edit Travel @Model.Date
+    </h4><hr />
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+    @Html.EditorForModel("TravelViewModel")
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Editar" class="btn btn-success" />
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Grade, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustomerId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustomerId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TravelerId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TravelerId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TravelerId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CityOriginId, "CityOriginId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CityOriginId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CityOriginId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CityDestinationId, "CityDestinationId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CityDestinationId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CityDestinationId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
     </div>
+
+
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@section specific_scripts{
+
+    <script>
+        $(function () {
+
+            $('#CityOriginId')
+            .select2({
+                placeholder: 'Select an origin city...'
+            });
+        });
+
+        $(function () {
+
+            $('#CityDestinationId')
+            .select2({
+                placeholder: 'Select a destination city...'
+            });
+        });
+
+    </script>
+
 }

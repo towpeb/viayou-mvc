@@ -7,5 +7,6 @@ namespace ViaYou.Domain.Repositories
         Country GetById(int id);
         void Add(Country country);
         IQueryable<Country> GetAll();
+        void Delete(int id);
     }
 }
