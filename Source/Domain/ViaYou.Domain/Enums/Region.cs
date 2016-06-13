@@ -9,5 +9,6 @@ namespace ViaYou.Domain.Enums
     public enum Region
     {
         Home,
+        ContactUs,
     }
 }

@@ -22,6 +22,7 @@ namespace ViaYou.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Advice> Advices { get; set; }
         public DbSet<Answer> Answers { get; set; }
+        public DbSet<HTMLContent> HTMLContent { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Container> Containers { get; set; }
 

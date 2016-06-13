@@ -206,6 +206,7 @@
     <Compile Include="Areas\Admin\Controllers\ContainersController.cs" />
     <Compile Include="Areas\Admin\Controllers\CountriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HTMLContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\TravelsController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Admin\Models\AdviceViewModel.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="Areas\Admin\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CityViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ContainerViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\HTMLContentViewModel.cs" />
     <Compile Include="Areas\Admin\Models\TravelViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CountryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuestionViewModel.cs" />
@@ -324,6 +326,11 @@
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Areas\Admin\Views\HTMLContent\EditorTemplates\HTMLContentViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\HTMLContent\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\HTMLContent\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\HTMLContent\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\HTMLContent\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Details.cshtml" />

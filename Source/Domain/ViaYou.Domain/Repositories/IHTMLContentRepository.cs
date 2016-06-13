@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ViaYou.Domain.Repositories
 {
-    interface IHTMLContentRepository
+    public interface IHTMLContentRepository
     {
         HTMLContent GetById(int id);
-        void Add(HTMLContent testimonial);
+        void Add(HTMLContent content);
         IQueryable<HTMLContent> GetAll();
+        void Delete(int id);
     }
 }

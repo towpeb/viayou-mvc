@@ -1,0 +1,26 @@
+﻿@model ViaYou.Web.Areas.Admin.Models.HTMLContentViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorForModel()
+}
+
+@section scripts
+{
+    @*<script>
+            $(function() {
+                $('#s2-regionType').select2({
+                    placeHolder: 'select a region type'
+                });
+            });
+        </script>*@
+}
+
+
