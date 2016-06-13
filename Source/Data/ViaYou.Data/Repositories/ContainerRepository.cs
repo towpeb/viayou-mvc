@@ -27,7 +27,7 @@ namespace ViaYou.Data.Repositories
             Context.Containers.Remove(container);
         }
 
-        public Container GetById(int id)
+        public Container GetById(int? id)
         {
             return Context.Containers.FirstOrDefault(ci => ci.Id == id);
         }

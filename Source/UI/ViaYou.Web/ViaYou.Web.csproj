@@ -206,6 +206,7 @@
     <Compile Include="Areas\Admin\Controllers\ContainersController.cs" />
     <Compile Include="Areas\Admin\Controllers\CountriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PackageController.cs" />
     <Compile Include="Areas\Admin\Controllers\TravelsController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Admin\Models\AdviceViewModel.cs" />
@@ -214,9 +215,10 @@
     <Compile Include="Areas\Admin\Models\CategoryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CityViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ContainerViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\TravelViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PackageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\CountryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\QuestionViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TravelViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -329,6 +331,11 @@
     <Content Include="Areas\Admin\Views\Travels\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\EditorTemplates\PackageViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Package\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Travels\EditorTemplates\TravelViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Countries\Delete.cshtml" />

@@ -29,6 +29,7 @@ namespace ViaYou.Web
             container.RegisterType<ICategoryRepository, CategoryRepository>();
             container.RegisterType<IAdviceRepository, AdviceRepository>();
             container.RegisterType<IAnswerRepository, AnswerRepository>();
+            container.RegisterType<IPackageRepository, PackageRepository>();
             container.RegisterType<IQuestionRepository, QuestionRepository>();
             container.RegisterType<ITravelRepository, TravelRepository>();
             container.RegisterType<ICountryRepository, CountryRepository>();

@@ -6,7 +6,7 @@ namespace ViaYou.Domain.Repositories
     public interface ICategoryRepository
     {
         void Add(Category category);
-        Category GetById(int id);
+        Category GetById(int? id);
         IQueryable<Category> GetAll();
         void Delete(int id);
     }

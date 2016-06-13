@@ -1,0 +1,59 @@
+﻿@model ViaYou.Web.Areas.Admin.Models.PackageViewModel
+
+<div class="row">
+    <div class="col-md-10 form-horizontal">
+        @if (Model == null)
+        {
+            <h4>Create Package</h4>
+        }
+        else
+        {
+            <h4>@($"Edit Package: {Model.Id}")</h4>
+        }
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="CategoryId" name="CategoryId" class="select2 form-control">
+                    <option value="" selected></option>
+                    @foreach (var answer in Model.AvailableCategories)
+                    {
+                        <option value="@answer.Value" @(answer.Selected ? "selected" : "")>@answer.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContainedInId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="ContainedInId" name="ContainedInId" class="select2 form-control">
+                    <option value="" selected></option>
+                    @foreach (var answer in Model.AvailableContained)
+                    {
+                        <option value="@answer.Value" @(answer.Selected ? "selected" : "")>@answer.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.ContainedInId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TravelId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="TravelId" name="TravelId" class="select2 form-control">
+                    <option value="" selected></option>
+                    @foreach (var answer in Model.AvailableTravel)
+                    {
+                        <option value="@answer.Value" @(answer.Selected ? "selected" : "")>@answer.Text</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.TravelId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+</div>

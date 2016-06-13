@@ -89,6 +89,7 @@
     <Compile Include="Repositories\CityRepository.cs" />
     <Compile Include="Repositories\ContainerRepository.cs" />
     <Compile Include="Repositories\CountryRepository.cs" />
+    <Compile Include="Repositories\PackageRepository.cs" />
     <Compile Include="Repositories\QuestionRepository.cs" />
     <Compile Include="Repositories\TravelRepository.cs" />
     <Compile Include="TransactionManager.cs" />
