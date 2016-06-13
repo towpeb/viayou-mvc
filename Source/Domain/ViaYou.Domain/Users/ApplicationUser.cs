@@ -22,7 +22,7 @@ namespace ViaYou.Domain.Users
 
         public string MiddleName { get; set; }
 
-        public ICollection<Travel> Travels{ get; set; }
+        public ICollection<Travel> Travels { get; set; }
 
         public void Update(string _firstName,string _lastName,string _middleName,string _userName,string _phoneNumber,string _email)
         {

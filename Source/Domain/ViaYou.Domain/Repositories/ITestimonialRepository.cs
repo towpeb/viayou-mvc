@@ -7,5 +7,6 @@ namespace ViaYou.Domain.Repositories
         Testimonial GetById(int id);
         void Add(Testimonial testimonial);
         IQueryable<Testimonial> GetAll();
+        void Delete(int id);
     }
 }

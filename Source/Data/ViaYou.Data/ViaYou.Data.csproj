@@ -90,6 +90,7 @@
     <Compile Include="Repositories\ContainerRepository.cs" />
     <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\QuestionRepository.cs" />
+    <Compile Include="Repositories\TestimonialRepository.cs" />
     <Compile Include="Repositories\TravelRepository.cs" />
     <Compile Include="TransactionManager.cs" />
     <Compile Include="ViaYouDataContext.cs" />

@@ -8,9 +8,8 @@ using ViaYou.Domain.Users;
 
 namespace ViaYou.Data.Repositories
 {
-    public class ApplicationUserRepository: BaseRepository,IApplicationUserRepository
+    public class ApplicationUserRepository : BaseRepository, IApplicationUserRepository
     {
-
         public void Add(ApplicationUser user)
         {
             Context.Users.Add(user);
